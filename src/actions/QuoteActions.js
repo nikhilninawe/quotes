@@ -1,10 +1,11 @@
 import QuoteApi from '../common/QuoteApi';
-import { FETCH_QUOTE } from './types';
+import { FETCH_QUOTE, FETCH_START } from './types';
 import staticQuotes from './quotes.json';
 const api = new QuoteApi();
 
 export const getQuote = () => {
   return (dispatch) => {
+      dispatch({ type: FETCH_START })
       api.getQuote()
          .then(response => {
               dispatch({

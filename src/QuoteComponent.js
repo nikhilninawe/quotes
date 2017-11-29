@@ -18,6 +18,17 @@ class QuoteComponent extends Component {
       this.props.getQuote();
     }
 
+    renderButton(){
+      if(this.props.loading){
+        return (<Spinner size="large" />);
+      }
+      return (
+        <Button onPress={this.onButtonPress.bind(this)}>
+          Next
+      </Button>
+    );
+    }
+
     render() {
       const { text, author } = this.props;
       return (
@@ -29,9 +40,7 @@ class QuoteComponent extends Component {
               <Text style={style.authorStyle}> -{author} </Text>
           </CardSection>
           <CardSection>
-            <Button onPress={this.onButtonPress.bind(this)}>
-                Next
-            </Button>
+            {this.renderButton()}
           </CardSection>
         </View>
       );
@@ -51,7 +60,8 @@ const style = {
 const mapStateToProps = (state) => {
   return {
     text: state.quote.text,
-    author: state.quote.author
+    author: state.quote.author,
+    loading: state.quote.loading
    };
 };
 
