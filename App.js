@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import ReduxThunk from 'redux-thunk';
-import { Card, CardSection, Input, Button, Spinner, Header } from './src/common';
+import { Card, CardSection, Input, Button, Spinner, Header } from './src/components/common';
 import { AppRegistry, Image } from 'react-native';
-import Main from './src/Main';
+import Main from './src/components/Main';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './src/reducers';

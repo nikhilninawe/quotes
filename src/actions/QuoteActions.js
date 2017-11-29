@@ -1,4 +1,4 @@
-import QuoteApi from '../common/QuoteApi';
+import QuoteApi from '../components/common/QuoteApi';
 import { FETCH_QUOTE, FETCH_START } from './types';
 import staticQuotes from './quotes.json';
 const api = new QuoteApi();
