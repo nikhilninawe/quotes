@@ -25,10 +25,8 @@ class QuoteComponent extends Component {
           <CardSection style={{ height: 200, borderBottomWidth:0}}>
             <Text style={style.textStyle}> {text} </Text>
           </CardSection>
-          <CardSection style={{ height: 60, borderBottomWidth:0, alignSelf: 'flex-end'}}>
-            <View>
+          <CardSection style={{ height: 60, borderBottomWidth:0, justifyContent:'flex-end'}}>
               <Text style={style.authorStyle}> -{author} </Text>
-            </View>
           </CardSection>
           <CardSection>
             <Button onPress={this.onButtonPress.bind(this)}>
