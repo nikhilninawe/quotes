@@ -22,14 +22,16 @@ class QuoteComponent extends Component {
         <Button onPress={this.onButtonPress.bind(this)}>
           Next
       </Button>
-    );
+      );
     }
 
     render() {
       const { text, author } = this.props;
       return (
         <View style={{ flexDirection: 'column' }}>
-          <CardSection style={{ borderBottomWidth: 0, flexDirection: 'row', minHeight: 200 }}>
+          <CardSection
+            style={{ borderBottomWidth: 0, flexDirection: 'row', minHeight: 200 }}
+          >
             <Text style={style.textStyle}> {text} </Text>
           </CardSection>
           <CardSection style={{ borderBottomWidth: 0, justifyContent: 'flex-end' }}>

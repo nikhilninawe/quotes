@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { CardSection } from './common';
 
 AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
-AdMobInterstitial.setAdUnitID('ca-app-pub-7330930382531571/5339560084');
+AdMobInterstitial.setAdUnitID('ca-app-pub-7330930382531571/2161219633');
 
 class GoogleAd extends Component {
 
@@ -19,13 +19,12 @@ class GoogleAd extends Component {
   }
 
   renderAds() {
-    console.log(this.props.count);
     if (this.props.count === 4) {
       this.showInterstitial();
     }
     return (
           <AdMobBanner
-            adSize="fullBanner"
+            adSize="smartBannerLandscape"
             adUnitID="ca-app-pub-7330930382531571/5339560084"
             testDevices={[AdMobBanner.simulatorId]}
             onAdFailedToLoad={error => console.error(error)}
@@ -35,7 +34,7 @@ class GoogleAd extends Component {
 
   render() {
     return (
-        <CardSection style={{ height: 60 }}>
+        <CardSection>
           { this.renderAds() }
         </CardSection>
     );
