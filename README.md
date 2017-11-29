@@ -1,4 +1,4 @@
 # quotes
 Motivational Quotes
 
-React Native app, which gives inspiratinal quotes, with Google Admob integration.
+React Native app, which gives inspirational quotes, with Google Admob integration.
