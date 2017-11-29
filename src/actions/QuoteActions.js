@@ -14,7 +14,8 @@ export const getQuote = () => {
                 payload: response
               });
          })
-         .catch(() => {
+         .catch(error => {
+           console.log(error);
            const randomQuote = Math.floor(Math.random() * staticQuotes.quotes.length);
            dispatch({
              type: FETCH_QUOTE,
