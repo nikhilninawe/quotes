@@ -7,6 +7,7 @@ import Main from './src/Main';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './src/reducers';
+console.ignoredYellowBox = ['Remote debugger'];
 
 export default class App extends Component {
     render() {

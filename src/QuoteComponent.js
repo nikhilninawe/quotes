@@ -32,11 +32,11 @@ class QuoteComponent extends Component {
     render() {
       const { text, author } = this.props;
       return (
-        <View>
-          <CardSection style={{ height: 200, borderBottomWidth:0}}>
+        <View style={{flexDirection: 'column'}}>
+          <CardSection style={{ borderBottomWidth:0, flexDirection:'row', minHeight: 200}}>
             <Text style={style.textStyle}> {text} </Text>
           </CardSection>
-          <CardSection style={{ height: 60, borderBottomWidth:0, justifyContent:'flex-end'}}>
+          <CardSection style={{  borderBottomWidth:0, justifyContent:'flex-end'}}>
               <Text style={style.authorStyle}> -{author} </Text>
           </CardSection>
           <CardSection>
@@ -50,7 +50,8 @@ class QuoteComponent extends Component {
 const style = {
   textStyle: {
     fontSize : 30,
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    flexWrap:'wrap'
   },
   authorStyle:{
       fontSize: 20
