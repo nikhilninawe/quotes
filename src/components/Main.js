@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { Card, CardSection, Input, Button, Spinner } from './common';
+import { Card } from './common';
 import GoogleAd from './GoogleAd';
 import QuoteComponent from './QuoteComponent';
 
- class Main extends Component {
-
+class Main extends Component {
    render() {
-      return(
+      return (
         <Card>
           <QuoteComponent />
-          <CardSection style={{height: 60}}>
-            <GoogleAd />
-          </CardSection>
+          <GoogleAd />
       </Card>
     );
     }
-};
+}
 
 export default Main;

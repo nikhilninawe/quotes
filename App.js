@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import ReduxThunk from 'redux-thunk';
-import { Card, CardSection, Input, Button, Spinner, Header } from './src/components/common';
-import { AppRegistry, Image } from 'react-native';
-import Main from './src/components/Main';
-import { Provider } from 'react-redux';
+import { View } from 'react-native';
 import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { Header } from './src/components/common';
+import Main from './src/components/Main';
 import reducers from './src/reducers';
+
 console.ignoredYellowBox = ['Remote debugger'];
 
 export default class App extends Component {
     render() {
-      return(
+      return (
         <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
           <View style={{ paddingTop: 20 }}>
-            <Header headerText="Inspirational Quotes"/>
+            <Header headerText="Inspirational Quotes" />
             <Main />
           </View>
         </Provider>
