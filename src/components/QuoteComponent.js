@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
-import { CardSection, Button, Spinner } from './common';
+import { Card, CardSection, Button, Spinner } from './common';
 import { getQuote } from '../actions';
 
 class QuoteComponent extends Component {
@@ -28,7 +28,7 @@ class QuoteComponent extends Component {
     render() {
       const { text, author } = this.props;
       return (
-        <View style={{ flexDirection: 'column' }}>
+        <Card style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
           <CardSection
             style={{ borderBottomWidth: 0, flexDirection: 'row', minHeight: 200 }}
           >
@@ -40,16 +40,17 @@ class QuoteComponent extends Component {
           <CardSection>
             {this.renderButton()}
           </CardSection>
-        </View>
+        </Card>
       );
     }
 }
 
 const style = {
   textStyle: {
-    fontSize: 30,
+    fontSize: 32,
     fontStyle: 'italic',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    fontWeight: 'bold',
   },
   authorStyle: {
       fontSize: 20

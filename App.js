@@ -4,8 +4,9 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { Header } from './src/components/common';
-import Main from './src/components/Main';
 import reducers from './src/reducers';
+import GoogleAd from './src/components/GoogleAd';
+import QuoteComponent from './src/components/QuoteComponent';
 
 console.ignoredYellowBox = ['Remote debugger'];
 
@@ -15,7 +16,8 @@ export default class App extends Component {
         <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
           <View style={{ paddingTop: 20 }}>
             <Header headerText="Inspirational Quotes" />
-            <Main />
+            <QuoteComponent />
+            <GoogleAd />
           </View>
         </Provider>
     );
