@@ -7,9 +7,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "appcenter": "^1.0.1",
+    "appcenter-analytics": "^1.0.1",
+    "appcenter-crashes": "^1.0.1",
     "react": "16.0.0",
     "react-native": "0.50.4",
     "react-native-admob": "^2.0.0-beta.3",
+    "react-native-code-push": "^5.2.0-beta",
     "react-native-rest-client": "^0.1.1",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
