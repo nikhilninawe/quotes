@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import codePush from 'react-native-code-push';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
@@ -10,7 +11,7 @@ import QuoteComponent from './src/components/QuoteComponent';
 
 console.ignoredYellowBox = ['Remote debugger'];
 
-export default class App extends Component {
+class App extends Component {
     render() {
       return (
         <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
@@ -23,3 +24,6 @@ export default class App extends Component {
     );
     }
 }
+
+// App = codePush(App);
+export default App;

@@ -29,10 +29,10 @@ class QuoteComponent extends Component {
       const { text, author } = this.props;
       return (
         <Card style={{ flexDirection: 'column', justifyContent: 'space-between' }}>
-          <CardSection
-            style={{ borderBottomWidth: 0, flexDirection: 'row', minHeight: 200 }}
-          >
-            <Text style={style.textStyle}> {text} </Text>
+        <CardSection
+          style={{ borderBottomWidth: 0, flexDirection: 'row', minHeight: 200 }}
+        >
+              <Text style={style.textStyle}> {text} </Text>
           </CardSection>
           <CardSection style={{ borderBottomWidth: 0, justifyContent: 'flex-end' }}>
               <Text style={style.authorStyle}> -{author} </Text>
