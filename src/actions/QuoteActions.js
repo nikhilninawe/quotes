@@ -4,15 +4,15 @@ import staticQuotes from './quotes.json';
 
 const api = new QuoteApi();
 
-// const testQuote = (dispatch) => {
-//   dispatch({
-//     type: FETCH_QUOTE,
-//     payload: {
-//                quoteText: staticQuotes.quotes[13].quote,
-//                quoteAuthor: staticQuotes.quotes[10].author
-//              }
-//   });
-// };
+const testQuote = (dispatch) => {
+  dispatch({
+    type: FETCH_QUOTE,
+    payload: {
+               quoteText: staticQuotes.quotes[13].quote,
+               quoteAuthor: staticQuotes.quotes[10].author
+             }
+  });
+};
 
 const prodQuote = (dispatch) => {
   api.getQuote()

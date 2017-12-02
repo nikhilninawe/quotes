@@ -2,7 +2,7 @@
 import { FETCH_QUOTE, FETCH_START } from '../actions/types';
 
 const INITIAL_STATE = { text: '', author: '', loading: false, count: 1 };
-
+let THRESHOLD = 5;
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_START:
@@ -10,8 +10,9 @@ export default (state = INITIAL_STATE, action) => {
     case FETCH_QUOTE: {
       let count = state.count;
       count++;
-      if (count === 5) {
+      if (count === THRESHOLD) {
         count = 0;
+        THRESHOLD = 10;
       }
       return { ...state,
             text: action.payload.quoteText,
