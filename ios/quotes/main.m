@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 
 #import "AppDelegate.h"
+#import <GoogleMobileAds/GADInterstitial.h>
+#import <GoogleMobileAds/GADBannerView.h>
 
 int main(int argc, char * argv[]) {
   @autoreleasepool {

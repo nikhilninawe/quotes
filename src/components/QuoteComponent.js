@@ -21,7 +21,7 @@ class QuoteComponent extends Component {
       return (
         <Button onPress={this.onButtonPress.bind(this)}>
           Next
-      </Button>
+         </Button>
       );
     }
 

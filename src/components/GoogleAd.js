@@ -18,18 +18,22 @@ class GoogleAd extends Component {
     AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
   }
 
+  showBannerAd() {
+    return (
+      <AdMobBanner
+        adSize="smartBannerLandscape"
+        adUnitID="ca-app-pub-7330930382531571/5339560084"
+        testDevices={[AdMobBanner.simulatorId]}
+        onAdFailedToLoad={error => console.error(error)}
+      />
+    );
+  }
+
   renderAds() {
     if (this.props.count === 4) {
       this.showInterstitial();
     }
-    return (
-          <AdMobBanner
-            adSize="smartBannerLandscape"
-            adUnitID="ca-app-pub-7330930382531571/5339560084"
-            testDevices={[AdMobBanner.simulatorId]}
-            onAdFailedToLoad={error => console.error(error)}
-          />
-    );
+    return this.showBannerAd();
   }
 
   render() {
