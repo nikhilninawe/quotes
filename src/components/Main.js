@@ -6,7 +6,6 @@ import GoogleAd from './GoogleAd';
 import QuoteComponent from './QuoteComponent';
 import { getQuote } from '../actions';
 
-
 class Main extends Component {
 
     componentWillMount() {

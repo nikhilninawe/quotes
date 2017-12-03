@@ -30,7 +30,7 @@ class GoogleAd extends Component {
   }
 
   renderAds() {
-    if (this.props.count === 4) {
+    if (this.props.count === 5) {
       this.showInterstitial();
     }
     return this.showBannerAd();
