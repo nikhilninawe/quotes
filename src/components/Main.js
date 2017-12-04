@@ -12,24 +12,24 @@ class Main extends Component {
         this.props.getQuote();
       }
   
-      onButtonPress() {
+    onButtonPress() {
         this.props.getQuote();
-      }
-  
-      renderButton() {
+    }
+
+    renderButton() {
         if (this.props.loading) {
-          return (<Spinner size="large" />);
+            return (<Spinner size="large" />);
         }
         return (
-          <Button onPress={this.onButtonPress.bind(this)}>
-            Next
+            <Button onPress={this.onButtonPress.bind(this)}>
+                Next
             </Button>
         );
-      }
+    }
 
     render() {
         return (
-            <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between', paddingTop: 20 }}>
+            <View style={{ flex: 1, paddingTop: 20, justifyContent: 'space-between' }}>
                 <Header headerText="Inspirational Quotes" />
                 <ScrollView> 
                     <TouchableWithoutFeedback>
@@ -53,7 +53,6 @@ const mapStateToProps = (state) => {
       loading: state.quote.loading
      };
   };
-  
   
 export default connect(mapStateToProps, { getQuote })(Main);
   

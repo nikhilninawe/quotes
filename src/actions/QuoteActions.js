@@ -8,8 +8,8 @@ const testQuote = (dispatch) => {
   dispatch({
     type: FETCH_QUOTE,
     payload: {
-               quoteText: staticQuotes.quotes[13].quote,
-               quoteAuthor: staticQuotes.quotes[10].author
+               quoteText: staticQuotes.quotes[13].quote + staticQuotes.quotes[13].quote,
+               quoteAuthor: staticQuotes.quotes[13].author
              }
   });
 };
@@ -24,12 +24,13 @@ const prodQuote = (dispatch) => {
      })
      .catch(error => {
        console.log(error);
-       const randomQuote = Math.floor(Math.random() * staticQuotes.quotes.length);
+       const randomQuote = Math.floor((Math.random() * staticQuotes.quotes.length) - 1);
+       const quote = staticQuotes.quotes[randomQuote];
        dispatch({
          type: FETCH_QUOTE,
          payload: {
-                    quoteText: staticQuotes.quotes[randomQuote].quote,
-                    quoteAuthor: staticQuotes.quotes[randomQuote].author
+                    quoteText: quote.quote,
+                    quoteAuthor: quote.author
                   }
        });
      });
