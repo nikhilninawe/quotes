@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Header, Spinner, Button, CardSection } from './common/index';
 import GoogleAd from './GoogleAd';
 import QuoteComponent from './QuoteComponent';
+import SwipeQuoteComponent from './SwipeQuoteComponent';
 import { getQuote } from '../actions';
 
 class Main extends Component {
@@ -31,14 +32,15 @@ class Main extends Component {
         return (
             <View style={{ flex: 1, paddingTop: 20, justifyContent: 'space-between' }}>
                 <Header headerText="Inspirational Quotes" />
-                <ScrollView> 
+                {/* <ScrollView> 
                     <TouchableWithoutFeedback>
                         <QuoteComponent {...this.props} />
                     </TouchableWithoutFeedback>
-                </ScrollView>
-                <CardSection>
+                </ScrollView> */}
+                <SwipeQuoteComponent />
+                {/* <CardSection>
                     {this.renderButton()}
-                 </CardSection>
+                 </CardSection> */}
                 <GoogleAd />
             </View>
         );
