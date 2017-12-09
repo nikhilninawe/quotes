@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { View, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { Header, Spinner, Button, CardSection } from './common/index';
+import { Header, Spinner, Button } from './common/index';
 import GoogleAd from './GoogleAd';
-import QuoteComponent from './QuoteComponent';
 import SwipeQuoteComponent from './SwipeQuoteComponent';
 import { getQuote } from '../actions';
 
@@ -37,7 +36,11 @@ class Main extends Component {
                         <QuoteComponent {...this.props} />
                     </TouchableWithoutFeedback>
                 </ScrollView> */}
-                <SwipeQuoteComponent />
+                <View style={{ flex: 1 }}>
+                     {/* <TouchableWithoutFeedback> */}
+                        <SwipeQuoteComponent />         
+                    {/* </TouchableWithoutFeedback>    */}
+                </View>
                 {/* <CardSection>
                     {this.renderButton()}
                  </CardSection> */}
