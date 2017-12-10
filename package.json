@@ -13,6 +13,7 @@
     "react-native": "0.50.4",
     "react-native-admob": "^2.0.0-beta.3",
     "react-native-deck-swiper": "^1.4.4",
+    "react-native-hamburger": "0.0.2",
     "react-native-rest-client": "^0.1.1",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",

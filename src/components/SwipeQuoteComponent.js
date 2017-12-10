@@ -88,7 +88,7 @@ const mapStateToProps = state => {
         );
     }   
     return {
-        quotes: [],
+        quotes: [{ quote: '', author: '' }],
         loading: state.quote.loading
     };
 };
