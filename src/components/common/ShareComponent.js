@@ -29,16 +29,16 @@ const ShareComponent = (props) => {
 
   return (
       <View style={styles.container}>
-      <TouchableOpacity 
-          onPress={shareTextWithTitle}
-      >
-          <View style={styles.instructions}>
-          <Image 
-          style={{ width: 40, height: 40 }}          
-          source={{ uri: shareImage }} 
-          />
-          </View>
-      </TouchableOpacity>
+        <TouchableOpacity 
+            onPress={shareTextWithTitle}
+        >
+            <View style={styles.instructions}>
+              <Image 
+                style={{ width: 40, height: 40 }}          
+                source={{ uri: shareImage }} 
+              />
+            </View>
+        </TouchableOpacity>
       </View>
   );
 };
@@ -49,7 +49,7 @@ const styles = {
     container: {
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'transparent'
+      backgroundColor: 'white'
     },
     instructions: {
       marginTop: 20,

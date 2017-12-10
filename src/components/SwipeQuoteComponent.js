@@ -33,7 +33,7 @@ class SwipeQuoteCompenent extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, justifyContent: 'flex-start' }}>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
                 <Swiper
                     cards={this.props.quotes}
                     renderCard={this.renderCard.bind(this)}
@@ -42,8 +42,12 @@ class SwipeQuoteCompenent extends Component {
                     cardIndex={0}
                     backgroundColor={'white'}
                     showSecondCard={false}
+                    disableTopSwipe
+                    disableBottomSwipe
+                    cardVerticalMargin={50}
+                    cardHorizontalMargin={10}
                 />
-             </View>
+            </View>
         );
     }
 }
@@ -68,6 +72,8 @@ const styles = {
         borderWidth: 2,
         borderColor: '#E8E8E8',
         backgroundColor: '#F5FCFF',
+        // alignItems: 'center'
+        // height: 1000
       }
 
 };
