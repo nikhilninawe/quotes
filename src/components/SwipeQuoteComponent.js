@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-deck-swiper';
 import { Spinner } from './common';
@@ -20,16 +20,20 @@ class SwipeQuoteCompenent extends Component {
             return (<Spinner size="large" />);
         }
         return (
-            <View style={styles.card}>
-                    <Text style={styles.text}>{quote.quote}</Text>
-                <Text style={styles.author}>-{quote.author}</Text>
-            </View>
+            <ScrollView> 
+                 <TouchableWithoutFeedback>
+                    <View style={styles.card}>
+                         <Text style={styles.text}>{quote.quote}</Text>
+                         <Text style={styles.author}>-{quote.author}</Text>
+                    </View>
+                </TouchableWithoutFeedback>
+            </ScrollView>
         ); 
     }
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, justifyContent: 'flex-start' }}>
                 <Swiper
                     cards={this.props.quotes}
                     renderCard={this.renderCard.bind(this)}
@@ -63,7 +67,6 @@ const styles = {
         borderRadius: 4,
         borderWidth: 2,
         borderColor: '#E8E8E8',
-        justifyContent: 'center',
         backgroundColor: '#F5FCFF',
       }
 

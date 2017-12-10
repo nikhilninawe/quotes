@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { Header, Spinner, Button } from './common/index';
+import { Header, Spinner, Button, ShareComponent } from './common/index';
 import GoogleAd from './GoogleAd';
 import SwipeQuoteComponent from './SwipeQuoteComponent';
 import { getQuote } from '../actions';
+
 
 class Main extends Component {
 
@@ -29,21 +30,10 @@ class Main extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, paddingTop: 20, justifyContent: 'space-between' }}>
+            <View style={{ flex: 1, paddingTop: 20 }}>
                 <Header headerText="Inspirational Quotes" />
-                {/* <ScrollView> 
-                    <TouchableWithoutFeedback>
-                        <QuoteComponent {...this.props} />
-                    </TouchableWithoutFeedback>
-                </ScrollView> */}
-                <View style={{ flex: 1 }}>
-                     {/* <TouchableWithoutFeedback> */}
-                        <SwipeQuoteComponent />         
-                    {/* </TouchableWithoutFeedback>    */}
-                </View>
-                {/* <CardSection>
-                    {this.renderButton()}
-                 </CardSection> */}
+                <SwipeQuoteComponent />         
+                <ShareComponent {...this.props} />
                 <GoogleAd />
             </View>
         );
