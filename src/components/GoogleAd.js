@@ -15,7 +15,7 @@ AdMobInterstitial.setAdUnitID('ca-app-pub-7330930382531571/2161219633');
 class GoogleAd extends Component {
 
   showInterstitial() {
-    AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
+    AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd()).catch(error => { console.log(error); });
   }
 
   showBannerAd() {
@@ -24,7 +24,7 @@ class GoogleAd extends Component {
         adSize="smartBannerLandscape"
         adUnitID="ca-app-pub-7330930382531571/5339560084"
         testDevices={[AdMobBanner.simulatorId]}
-        onAdFailedToLoad={error => console.error(error)}
+        onAdFailedToLoad={error => console.log(error)}
       />
     );
   }
