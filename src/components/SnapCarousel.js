@@ -87,7 +87,9 @@ const styles = {
       author: {
         textAlign: 'right',
         fontSize: 20,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        paddingTop: 20,
+        paddingBottom: 10
       },
       card: {
         borderRadius: 4,
