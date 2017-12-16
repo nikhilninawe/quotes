@@ -1,7 +1,7 @@
 
-import { FETCH_QUOTE, FETCH_START, FETCH_SINGLE_QUOTE, SWITCH_STATE } from '../actions/types';
+import { FETCH_QUOTE, FETCH_START, FETCH_SINGLE_QUOTE, SWITCH_STATE, CURRENT_QUOTE } from '../actions/types';
 
-const INITIAL_STATE = { current: [], next: [], loading: false, count: 0, index: 0 };
+const INITIAL_STATE = { current: [], next: [], loading: false, count: 0, currentQuote: null };
 let THRESHOLD = 5;
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -11,6 +11,7 @@ export default (state = INITIAL_STATE, action) => {
       return { 
             ...state,
             current: action.payload,
+            currentQuote: action.payload[0],
             loading: false,
       };
     }
@@ -32,6 +33,11 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         current: state.current.concat(state.next),
         next: []
+     };
+    case CURRENT_QUOTE:
+      return {
+        ...state,
+        currentQuote: action.payload
       };
     default:
         return state;

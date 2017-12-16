@@ -3,7 +3,7 @@ import { View, Text, ScrollView, TouchableWithoutFeedback, Dimensions } from 're
 import { connect } from 'react-redux';
 import Carousel from 'react-native-snap-carousel';
 import { Spinner } from './common';
-import { getQuote, getSingleQuote, switchState } from '../actions/QuoteActions';
+import { getQuote, getSingleQuote, switchState, updateCurrentQuote } from '../actions/QuoteActions';
 
 function wp(percentage) {
     const value = (percentage * viewportWidth) / 100;
@@ -14,7 +14,7 @@ const slideHeight = viewportHeight * 0.4;
 const slideWidth = wp(75);
 const itemHorizontalMargin = wp(2);
 const sliderWidth = viewportWidth;
-const itemWidth = (slideWidth + (itemHorizontalMargin * 2));
+const itemWidth = (slideWidth + (itemHorizontalMargin * 2)) + 40;
 
 class SnapCarousel extends Component {
   
@@ -24,6 +24,7 @@ class SnapCarousel extends Component {
 
     onSnapToItem(slideIndex) {
         this.props.getSingleQuote();
+        this.props.updateCurrentQuote(this.props.quotes[slideIndex]);
         if (slideIndex === this.props.quotes.length - 1) {
             this.props.switchState();
         }
@@ -62,7 +63,6 @@ class SnapCarousel extends Component {
                     onSnapToItem={this.onSnapToItem.bind(this)}
                     firstItem={0}
                 />
-
              </View>
         );
     }
@@ -94,6 +94,7 @@ const styles = {
 
 const mapStateToProps = state => {
     const quotes = state.quote.current;
+    console.log(state);
     if (quotes) {
         return ({
             quotes,
@@ -109,5 +110,7 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { getQuote, switchState, getSingleQuote })(SnapCarousel);
+export default
+ connect(mapStateToProps, 
+    { getQuote, switchState, getSingleQuote, updateCurrentQuote })(SnapCarousel);
 

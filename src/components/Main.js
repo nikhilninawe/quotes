@@ -21,9 +21,7 @@ class Main extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      text: state.quote.text,
-      author: state.quote.author,
-      loading: state.quote.loading
+      quote: state.quote.currentQuote,
      };
   };
   

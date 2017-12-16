@@ -1,6 +1,11 @@
 import QuoteApi from '../components/common/QuoteApi';
 import TalaikisApi from '../components/common/TalaikisApi';
-import { FETCH_QUOTE, FETCH_START, FETCH_SINGLE_QUOTE, SWITCH_STATE } from './types';
+import { 
+  FETCH_QUOTE, 
+  FETCH_START, 
+  FETCH_SINGLE_QUOTE,
+  SWITCH_STATE,
+  CURRENT_QUOTE } from './types';
 import staticQuotes from './quotes.json';
 
 const api = new QuoteApi();
@@ -106,5 +111,12 @@ export const pullQuotes = () => {
 export const switchState = () => {
   return {
     type: SWITCH_STATE
+  };
+};
+
+export const updateCurrentQuote = (quote) => {
+  return {
+    type: CURRENT_QUOTE,
+    payload: quote
   };
 };
