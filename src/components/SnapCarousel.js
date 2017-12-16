@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableWithoutFeedback, Dimensions } from 'react-native';
+import { View, Text, ScrollView, TouchableWithoutFeedback, Dimensions, ImageBackground } from 'react-native';
+import Images from './images';
 import { connect } from 'react-redux';
 import Carousel from 'react-native-snap-carousel';
 import { Spinner } from './common';
@@ -15,6 +16,7 @@ const slideWidth = wp(75);
 const itemHorizontalMargin = wp(2);
 const sliderWidth = viewportWidth;
 const itemWidth = (slideWidth + (itemHorizontalMargin * 2)) + 40;
+const images = [require('../assets/leather.jpg'), require('../assets/beige.jpg'), require('../assets/polyester.jpeg'), require('../assets/stock.jpg')];
 
 class SnapCarousel extends Component {
   
@@ -31,13 +33,17 @@ class SnapCarousel extends Component {
     }
 
     renderCard({ item }) {
+        const background = images[item.imageIndex];        
         return (
             <ScrollView> 
                 <TouchableWithoutFeedback>
-                 <View style={styles.card}>
+                <ImageBackground
+                    source={background}
+                    style={{ width: itemWidth }}          
+                >
                     <Text style={styles.text}>{item.quote}</Text>
                     <Text style={styles.author}>-{item.author}</Text>
-                 </View>
+                 </ImageBackground>
              </TouchableWithoutFeedback>
          </ScrollView>
         ); 
@@ -94,7 +100,6 @@ const styles = {
 
 const mapStateToProps = state => {
     const quotes = state.quote.current;
-    console.log(state);
     if (quotes) {
         return ({
             quotes,

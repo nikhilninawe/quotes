@@ -10,6 +10,14 @@ import staticQuotes from './quotes.json';
 
 const api = new QuoteApi();
 const tApi = new TalaikisApi();
+const imagesSize = 4;
+
+function timeoutPromise(timeout, err, promise) {
+  return new Promise((resolve, reject) => {
+    promise.then(resolve, reject);
+    setTimeout(reject.bind(null, err), timeout);
+  });
+}
 
 const testQuote = (dispatch) => {
   dispatch({
@@ -22,13 +30,15 @@ const testQuote = (dispatch) => {
 };
 
 const prodQuote = (dispatch) => {
-  api.getQuote()
+  const imageIndex = Math.floor(Math.random() * imagesSize);  
+  timeoutPromise(100, new Error('Timed Out!'), api.getQuote())
      .then(response => {
           dispatch({
             type: FETCH_SINGLE_QUOTE,
             payload: {
               quote: response.quoteText,
-              author: response.quoteAuthor
+              author: response.quoteAuthor,
+              imageIndex
             }
           });
      })
@@ -40,11 +50,19 @@ const prodQuote = (dispatch) => {
          type: FETCH_SINGLE_QUOTE,
          payload: {
                     quote: quote.quote,
-                    author: quote.author
+                    author: quote.author,
+                    imageIndex
                   }
        });
      });
 };
+
+const getModifiedQuotes = quotes => {
+  quotes.forEach(quote => {
+    quote.imageIndex = Math.floor((Math.random() * imagesSize));
+  });
+};
+
 
 const prodQuoteV2 = (dispatch) => {
   const randomQuote = Math.floor((Math.random() * staticQuotes.quotes.length) - 1);
@@ -71,16 +89,19 @@ const prodQuoteV2 = (dispatch) => {
 
 const talaikisQuotes = (dispatch) => {
   const randomQuote = Math.floor((Math.random() * 90) - 1);  
-  tApi.getQuote()
+  timeoutPromise(1000, new Error('Timed Out!'), tApi.getQuote())
       .then(response => {
+        const quotes = response.splice(randomQuote, 10);
+        getModifiedQuotes(quotes);
         dispatch({
           type: FETCH_QUOTE,
-          payload: response.splice(randomQuote, 10)
+          payload: quotes
         });
       })
       .catch(error => {
         console.log(error);
         const quote = staticQuotes.quotes.splice(randomQuote, 10);
+        getModifiedQuotes(quote);
         dispatch({
           type: FETCH_QUOTE,
           payload: quote
