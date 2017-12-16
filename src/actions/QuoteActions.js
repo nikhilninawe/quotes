@@ -89,7 +89,7 @@ const prodQuoteV2 = (dispatch) => {
 
 const talaikisQuotes = (dispatch) => {
   const randomQuote = Math.floor((Math.random() * 90) - 1);  
-  timeoutPromise(1000, new Error('Timed Out!'), tApi.getQuote())
+  timeoutPromise(2000, new Error('Timed Out!'), tApi.getQuote())
       .then(response => {
         const quotes = response.splice(randomQuote, 10);
         getModifiedQuotes(quotes);

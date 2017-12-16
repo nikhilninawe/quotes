@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableWithoutFeedback, Dimensions, ImageBackground } from 'react-native';
-import Images from './images';
+import { View, Text,
+     ScrollView, TouchableWithoutFeedback, Dimensions, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import Carousel from 'react-native-snap-carousel';
 import { Spinner } from './common';
