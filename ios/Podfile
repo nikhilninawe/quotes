@@ -10,6 +10,10 @@ target 'quotes' do
   target 'quotes-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RNViewShot', :path => '../node_modules/react-native-view-shot'
+
+
+
   end
 
   target 'quotesTests' do

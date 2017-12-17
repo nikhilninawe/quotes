@@ -41,6 +41,7 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		EE7E766031DA49BD8BA95550 /* libRNAdMobManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA44CDF79D5949A6813D0535 /* libRNAdMobManager.a */; };
 		FB3CFB7190A461094C7D82F7 /* libPods-quotes-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D4A1D079DE2B1AF078A4ED /* libPods-quotes-tvOSTests.a */; };
+		8C2851FDF72D40A8BD61A2D8 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC58177925FB422EA30F41A8 /* libRCTActionSheet.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -308,6 +309,8 @@
 		D7896F36DFF2AF999908645E /* libPods-quotes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-quotes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BF6ABF43FD15BEFF78F637 /* Pods-quotesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quotesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-quotesTests/Pods-quotesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F7A1F99B03192A20FA087113 /* Pods-quotesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quotesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-quotesTests/Pods-quotesTests.release.xcconfig"; sourceTree = "<group>"; };
+		2C9B9E31BA02431DB33403A9 /* Exemple.xcodeproj */ = {isa = PBXFileReference; name = "Exemple.xcodeproj"; path = "../node_modules/react-native-deck-swiper/Exemples/ios/Exemple.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		FC58177925FB422EA30F41A8 /* libRCTActionSheet.a */ = {isa = PBXFileReference; name = "libRCTActionSheet.a"; path = "libRCTActionSheet.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +342,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				EE7E766031DA49BD8BA95550 /* libRNAdMobManager.a in Frameworks */,
 				260A3305E0CAB66A9B25AFB8 /* libPods-quotes.a in Frameworks */,
+				8C2851FDF72D40A8BD61A2D8 /* libRCTActionSheet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +524,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				07C1426D5FF441DE8169CB98 /* RNAdMobManager.xcodeproj */,
+				2C9B9E31BA02431DB33403A9 /* Exemple.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1284,12 +1289,14 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-deck-swiper/Exemples/ios/Exemple",
 				);
 				INFOPLIST_FILE = quotesTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1309,12 +1316,14 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-deck-swiper/Exemples/ios/Exemple",
 				);
 				INFOPLIST_FILE = quotesTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1335,6 +1344,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-deck-swiper/Exemples/ios/Exemple",
 				);
 				INFOPLIST_FILE = quotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1357,6 +1367,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-deck-swiper/Exemples/ios/Exemple",
 				);
 				INFOPLIST_FILE = quotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1385,11 +1396,13 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-deck-swiper/Exemples/ios/Exemple",
 				);
 				INFOPLIST_FILE = "quotes-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1418,11 +1431,13 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-deck-swiper/Exemples/ios/Exemple",
 				);
 				INFOPLIST_FILE = "quotes-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1452,6 +1467,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.quotes-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1477,6 +1493,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.quotes-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
