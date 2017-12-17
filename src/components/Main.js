@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { Header } from './common/index';
+import { Header, ShareComponent } from './common/index';
 import GoogleAd from './GoogleAd';
 import SnapCarousel from './SnapCarousel';
 
@@ -11,6 +11,7 @@ class Main extends Component {
             <View style={{ flex: 1, paddingTop: 20, justifyContent: 'space-between' }} >
                 <Header headerText="Inspirational Quotes" />
                 <SnapCarousel />         
+                <ShareComponent {...this.props} />
                 <GoogleAd />
             </View>
         );

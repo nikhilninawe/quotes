@@ -10,7 +10,8 @@ const ShareComponent = (props) => {
   const shareTextWithTitle = () => {
     Share.share({
       message: props.quote.quote + ' -' + props.quote.author,
-      title: 'Quote by ' + props.quote.author
+      title: 'Quote by ' + props.quote.author,
+      url: 'https://cdn.pixabay.com/photo/2015/06/19/17/58/sample-815141_1280.jpg'
     }, {
       dialogTitle: 'Share quotes via',
       excludedActivityTypes: [

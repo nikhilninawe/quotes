@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import Carousel from 'react-native-snap-carousel';
 import { Spinner } from './common';
 import { getQuote, getSingleQuote, switchState, updateCurrentQuote } from '../actions/QuoteActions';
-import { SC2 } from './common/SC2';
 
 function wp(percentage) {
     const value = (percentage * viewportWidth) / 100;
@@ -105,7 +104,6 @@ class SnapCarousel extends Component {
                         onSnapToItem={this.onSnapToItem.bind(this)}
                         firstItem={0}
                     />
-                    <SC2 onPress={this.shareTextWithTitle.bind(this)} />
                 </View>
         );
     }
