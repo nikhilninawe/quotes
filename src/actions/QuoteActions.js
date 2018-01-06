@@ -31,7 +31,7 @@ const testQuote = (dispatch) => {
 
 const prodQuote = (dispatch) => {
   const imageIndex = Math.floor(Math.random() * imagesSize);  
-  timeoutPromise(100, new Error('Timed Out!'), api.getQuote())
+  timeoutPromise(300, new Error('Timed Out!'), api.getQuote())
      .then(response => {
           dispatch({
             type: FETCH_SINGLE_QUOTE,
@@ -63,33 +63,9 @@ const getModifiedQuotes = quotes => {
   });
 };
 
-
-const prodQuoteV2 = (dispatch) => {
-  const randomQuote = Math.floor((Math.random() * staticQuotes.quotes.length) - 1);
-  const quote = staticQuotes.quotes[randomQuote];
-  api.getQuote()
-     .then(response => {
-          dispatch({
-            type: FETCH_QUOTE,
-            payload: [{ quote: response.quoteText, author: response.quoteAuthor },
-                      { quote: quote.quote, author: quote.author }]
-          });
-     })
-     .catch(error => {
-       console.log(error);  
-       dispatch({
-         type: FETCH_QUOTE,
-         payload: [{
-                    quote: quote.quote,
-                    author: quote.author
-                  }]
-       });
-     });
-};
-
 const talaikisQuotes = (dispatch) => {
   const randomQuote = Math.floor((Math.random() * 90) - 1);  
-  timeoutPromise(2000, new Error('Timed Out!'), tApi.getQuote())
+  timeoutPromise(3000, new Error('Timed Out!'), tApi.getQuote())
       .then(response => {
         const quotes = response.splice(randomQuote, 10);
         getModifiedQuotes(quotes);
@@ -109,23 +85,48 @@ const talaikisQuotes = (dispatch) => {
       });
 };
 
+const talaikisRandomQuote = (dispatch) => {
+  const randomQuote = Math.floor((Math.random() * 90) - 1);  
+  timeoutPromise(300, new Error('Timed Out!'), tApi.getRandomQuote())
+      .then(response => {
+        dispatch({
+          type: FETCH_QUOTE,
+          payload: {
+            quote: response.quote,
+            author: response.author
+          }
+        });
+      })
+      .catch(error => {
+        console.log(error);
+        const quote = staticQuotes.quotes[randomQuote];
+        getModifiedQuotes(quote);
+        dispatch({
+          type: FETCH_QUOTE,
+          payload: {
+            quote: quote.quote,
+            author: quote.author
+          }
+        });
+      });
+};
+
 export const getQuote = () => {
   return (dispatch) => {
       dispatch({ type: FETCH_START });
-      // testQuote(dispatch);
       talaikisQuotes(dispatch);
+  };
+};
+
+export const getRandomQuote = () => {
+  return (dispatch) => {
+    talaikisRandomQuote(dispatch);
   };
 };
 
 export const getSingleQuote = () => {
   return (dispatch) => {
     prodQuote(dispatch);
-  };
-};
-
-export const pullQuotes = () => {
-  return (dispatch) => {
-    talaikisQuotes(dispatch);
   };
 };
 
@@ -141,3 +142,4 @@ export const updateCurrentQuote = (quote) => {
     payload: quote
   };
 };
+

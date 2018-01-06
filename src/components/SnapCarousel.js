@@ -16,7 +16,8 @@ const slideWidth = wp(75);
 const itemHorizontalMargin = wp(2);
 const sliderWidth = viewportWidth;
 const itemWidth = (slideWidth + (itemHorizontalMargin * 2)) + 40;
-const images = [require('../assets/leather.jpg'), require('../assets/beige.jpg'), require('../assets/polyester.jpeg'), require('../assets/stock.jpg')];
+const images = [require('../assets/leather.jpg'), require('../assets/beige.jpg'),
+ require('../assets/polyester.jpeg'), require('../assets/stock.jpg')];
 
 class SnapCarousel extends Component {
   

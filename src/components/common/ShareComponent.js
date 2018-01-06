@@ -52,8 +52,10 @@ const styles = {
       backgroundColor: 'white'
     },
     instructions: {
-      marginTop: 20,
-      marginBottom: 20,
+      marginTop: 10,
+      marginBottom: 10,
+      marginLeft: 20,
+      marginRight: 20
     },
   };
 
