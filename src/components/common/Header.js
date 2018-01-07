@@ -11,7 +11,7 @@ const Header = (props) => {
   return (
     <View style={viewStyle}>
       <View style={{ paddingLeft: 10 }}>
-        <Hamburger active={false} />
+        <Hamburger active={props.hamburgerState} onPress={props.onPress} />
       </View>
       <Text style={textStyle}>{props.headerText}</Text>
     </View>

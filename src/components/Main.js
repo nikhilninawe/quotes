@@ -1,33 +1,36 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import Drawer from 'react-native-drawer';
 import { connect } from 'react-redux';
-import { Header, ShareComponent } from './common/index';
-import GoogleAd from './GoogleAd';
-import SwipeQuoteComponent from './SwipeQuoteComponent';
-import { getQuote } from '../actions';
-
+import MainContent from './MainContent';
+import ControlPanel from './ControlPanel';
 
 class Main extends Component {
     render() {
         return (
-            <View style={{ flex: 1, paddingTop: 20 }}>
-                <Header headerText="Inspirational Quotes" />
-                <SwipeQuoteComponent />         
-                <ShareComponent {...this.props} />
-                <GoogleAd />
-            </View>
+            <Drawer
+                ref={(ref) => { this.drawer = ref; }}
+                open={this.props.hamActive}
+                side="left"
+                type="overlay"
+                openDrawerOffset={0.2} // 20% gap on the right side of drawer            
+                content={<ControlPanel />}
+                styles={drawerStyles}            
+            >
+                <MainContent />
+            </Drawer>
         );
     }
-
 }
+
+const drawerStyles = {
+    drawer: { shadowColor: '#000000', shadowOpacity: 0, shadowRadius: 3 },
+    main: { paddingLeft: 3 },
+};
 
 const mapStateToProps = (state) => {
     return {
-      text: state.quote.text,
-      author: state.quote.author,
-      loading: state.quote.loading
-     };
-  };
-  
-export default connect(mapStateToProps, { getQuote })(Main);
-  
+         hamActive: state.hamburger.active  
+    };
+};
+
+export default connect(mapStateToProps, {})(Main);

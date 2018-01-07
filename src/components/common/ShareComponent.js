@@ -9,10 +9,10 @@ import {
 const ShareComponent = (props) => {
   const shareTextWithTitle = () => {
     Share.share({
-      message: props.text,
-      title: 'Quote by ' + props.author
+      message: `${props.quote.quote} - ${props.quote.author}`,
+      title: `Quote by ${props.quote.author}`
     }, {
-      dialogTitle: 'Share with',
+      dialogTitle: 'Share quotes via',
       excludedActivityTypes: [
         'com.apple.UIKit.activity.PostToTwitter',
         'com.apple.uikit.activity.mail'
@@ -52,8 +52,10 @@ const styles = {
       backgroundColor: 'white'
     },
     instructions: {
-      marginTop: 20,
-      marginBottom: 20,
+      marginTop: 10,
+      marginBottom: 10,
+      marginLeft: 20,
+      marginRight: 20
     },
   };
 
