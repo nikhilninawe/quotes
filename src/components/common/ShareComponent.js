@@ -9,8 +9,8 @@ import {
 const ShareComponent = (props) => {
   const shareTextWithTitle = () => {
     Share.share({
-      message: props.quote.quote + ' -' + props.quote.author,
-      title: 'Quote by ' + props.quote.author
+      message: `${props.quote.quote} - ${props.quote.author}`,
+      title: `Quote by ${props.quote.author}`
     }, {
       dialogTitle: 'Share quotes via',
       excludedActivityTypes: [
