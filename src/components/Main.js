@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, DeviceEventEmitter, Linking, Platform } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
 import BackgroundJob from 'react-native-background-job';
@@ -32,15 +32,16 @@ BackgroundJob.register(backgroundJob);
 class Main extends Component {
     state = { showModal: false, quoteToShow: '' };    
     componentWillMount() {
+        
+    }
+
+    componentDidMount() {
         PushNotification.configure({
             popInitialNotification: false,            
             onNotification: (notification) => {
                 this.setState({ showModal: true, quoteToShow: notification.message });
             }    
         });
-    }
-
-    componentDidMount() {
         BackgroundJob.schedule({            
             jobKey: 'myJob',
             period: 3 * 60 * 60 * 1000,
