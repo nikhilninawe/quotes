@@ -21,7 +21,7 @@ const backgroundJob = {
         const nextTime = getNextNotificationTime();
         const randomQuote = Math.floor((Math.random() * quotes.quotes.length) - 1);   
         PushNotification.localNotificationSchedule({
-            message: quotes.quotes[randomQuote].quote,
+            message: `${quotes.quotes[randomQuote].quote} \n-${quotes.quotes[randomQuote].author}`,
             date: nextTime,
         });
     }
@@ -44,7 +44,8 @@ class MainContent extends Component {
         });
         BackgroundJob.schedule({            
             jobKey: 'myJob',
-            period: 3 * 60 * 60 * 1000,
+            // period: 3 * 60 * 60 * 1000,
+            period: 1000,
             timeout: 10000,
             allowExecutionInForeground: true
         });       

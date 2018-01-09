@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View, ImageBackground, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import Modal from 'react-native-modalbox';
-import { CardSection } from './common/CardSection';
-import { ShareComponent, Button, Card } from './common/index';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { ShareComponent } from './common/index';
 
 const PopupQuote = ({ children, visible = false, onClose }) => {
-    const { containerStyle, textStyle, cardSectionStyle } = styles;
+    let quoteSplit = children.split('-');
     return (      
       <Modal
         style={[styles.modal3]}
@@ -14,25 +14,26 @@ const PopupQuote = ({ children, visible = false, onClose }) => {
         backdropPressToClose={false}
         swipeToClose={false}
       >
-        <View style={containerStyle}>
-        <ScrollView> 
-         <TouchableWithoutFeedback>
-            <ImageBackground
-            source={require('../assets/leather.jpg')}
-            style={{ width: 350, height: 240 }}          
-            >
-              <Text style={styles.text}>{children}</Text>
-              <Text style={styles.author}>-</Text>
-             </ImageBackground>
-            </TouchableWithoutFeedback>
+        {/* <View style={containerStyle}> */}
+          <ScrollView style={{ minHeight: 400 }}> 
+            <TouchableWithoutFeedback>
+                <ImageBackground
+                  source={require('../assets/leather.jpg')}
+                  style={{ width: 350 }}          
+                >
+                  <View style={{ alignItems: 'flex-end'}}>
+                    <Icon name="close" size={30} onPress={onClose} alignSelf={'right'} />
+                  </View>
+                  <Text style={styles.text}>{quoteSplit[0]}</Text>
+                  <Text style={styles.author}>-{quoteSplit[1]}</Text>
+                </ImageBackground>
+              </TouchableWithoutFeedback>
+            
+            <View style={{ justifyContent: 'center', height: 60 }} >
+                <ShareComponent quote={{ quote: quoteSplit[0], author: quoteSplit[1] }} />
+            </View>
           </ScrollView>
-          <CardSection style={{ justifyContent: 'center', height: 60 }} >
-              <View style={{ width: 120, paddingRight: 30 }}>
-                <Button onPress={onClose}>Close</Button>
-              </View>
-              <ShareComponent quote={{ quote: children, author: '' }} />
-          </CardSection>
-        </View>
+        {/* </View> */}
       </Modal>
     );
 };
@@ -55,13 +56,13 @@ const styles = {
     alignItems: 'center'
   },
   modal3: {
-    maxHeight: 300,
+    maxHeight: 400,
     width: 350
   },
   text: {
     textAlign: 'center',
     backgroundColor: 'transparent',
-    minHeight: 100,
+    minHeight: 250,
     fontSize: 32,
     fontStyle: 'italic',
     fontWeight: 'bold',
