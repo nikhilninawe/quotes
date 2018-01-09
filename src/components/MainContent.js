@@ -3,12 +3,11 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
 import BackgroundJob from 'react-native-background-job';
-import { Header, ShareComponent } from './common/index';
+import { ShareComponent } from './common/index';
 import GoogleAd from './GoogleAd';
 import SnapCarousel from './SnapCarousel';
 import { PopupQuote } from './PopupQuote';
 import quotes from '../actions/quotes.json';
-import { changeHamburgerStatus } from '../actions/index';
 
 const backgroundJob = {
     jobKey: 'myJob',
@@ -62,7 +61,7 @@ class MainContent extends Component {
     render() {
         return (
             <View style={{ flex: 1, paddingTop: 20, justifyContent: 'space-between' }} >
-                <Header headerText="Inspirational Quotes" hamburgerState={this.props.hamActive} onPress={this.onHamburgerPress.bind(this)} />
+                {/* <Header headerText="Inspirational Quotes" hamburgerState={this.props.hamActive} onPress={this.onHamburgerPress.bind(this)} /> */}
                 <SnapCarousel />         
                 <ShareComponent {...this.props} />
                 <GoogleAd />
@@ -81,9 +80,8 @@ class MainContent extends Component {
 const mapStateToProps = (state) => {
     return {
       quote: state.quote.currentQuote,
-      hamActive: state.hamburger.active
      };
   };
   
-export default connect(mapStateToProps, { changeHamburgerStatus })(MainContent);
+export default connect(mapStateToProps, { })(MainContent);
   
