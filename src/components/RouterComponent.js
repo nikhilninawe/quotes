@@ -4,10 +4,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import ControlPanel from './ControlPanel';
 import MainContent from './MainContent';
 import FavoriteComponent from './FavoriteComponent';
+import Settings from './Settings';
 
 const RouterComponent = () => {
     const menuIcon = (<Icon name="menu" size={30} />);
-    const backIcon = (<Icon name="arrow-back" size={30} />);
     return (
       <Router sceneStyle={{ paddingTop: 20 }}>
         <Scene 
@@ -27,18 +27,18 @@ const RouterComponent = () => {
           />
   
           <Scene
-            onLeft={() => Actions.main()}
-            drawerIcon={backIcon}
+            onBack={() => Actions.main({ reload: false })}
+            back
             key="favourite"
             component={FavoriteComponent}
             title="Favorites"
           />
 
           <Scene
-              onLeft={() => Actions.main()}
-              drawerIcon={backIcon}
+              onBack={() => Actions.main({ reload: false })}
+              back
               key="settings"
-              component={FavoriteComponent}
+              component={Settings}
               title="Settings"
           />
         </Scene>

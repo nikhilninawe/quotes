@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ShareComponent } from './common/index';
 
 const PopupQuote = ({ children, visible = false, onClose }) => {
-    let quoteSplit = children.split('-');
+    const quoteSplit = children.split('-');
     return (      
       <Modal
         style={[styles.modal3]}
@@ -21,7 +21,7 @@ const PopupQuote = ({ children, visible = false, onClose }) => {
                   source={require('../assets/leather.jpg')}
                   style={{ width: 350 }}          
                 >
-                  <View style={{ alignItems: 'flex-end'}}>
+                  <View style={{ alignItems: 'flex-end' }}>
                     <Icon name="close" size={30} onPress={onClose} alignSelf={'right'} />
                   </View>
                   <Text style={styles.text}>{quoteSplit[0]}</Text>

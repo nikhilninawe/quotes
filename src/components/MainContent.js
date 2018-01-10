@@ -32,7 +32,6 @@ BackgroundJob.register(backgroundJob);
 class MainContent extends Component {
     state = { showModal: false, quoteToShow: '' };    
     componentWillMount() {
-        
     }
 
     componentDidMount() {
@@ -44,26 +43,24 @@ class MainContent extends Component {
         });
         BackgroundJob.schedule({            
             jobKey: 'myJob',
-            // period: 3 * 60 * 60 * 1000,
-            period: 1000,
+            period: 3 * 60 * 60 * 1000,
+            // period: 1000,
             timeout: 10000,
             allowExecutionInForeground: true
         });       
+    }
+
+    componentWillReceiveProps() {
     }
 
     onDecline() {
         this.setState({ showModal: false });
     }
 
-    onHamburgerPress() {
-        this.props.changeHamburgerStatus();
-    }
-
     render() {
         return (
             <View style={{ flex: 1, paddingTop: 20, justifyContent: 'space-between' }} >
-                {/* <Header headerText="Inspirational Quotes" hamburgerState={this.props.hamActive} onPress={this.onHamburgerPress.bind(this)} /> */}
-                <SnapCarousel />         
+                <SnapCarousel reload={this.props.reload} />         
                 <ShareComponent {...this.props} />
                 <GoogleAd />
                 <PopupQuote

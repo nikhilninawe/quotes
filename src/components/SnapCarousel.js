@@ -22,7 +22,9 @@ const images = [require('../assets/leather.jpg'), require('../assets/beige.jpg')
 class SnapCarousel extends Component {
   
     componentWillMount() {
-        this.props.getQuote();        
+        if (this.props.reload === undefined || this.props.reload) {
+            this.props.getQuote();
+        }        
     }
 
     onSnapToItem(slideIndex) {
@@ -60,7 +62,7 @@ class SnapCarousel extends Component {
                     data={this.props.quotes}
                     renderItem={this.renderCard.bind(this)}
                     sliderWidth={sliderWidth}
-                    itemWidth={itemWidth}
+                    itemWidth={itemWidth}   
                     loop={false}
                     loopClonesPerSide={0}
                     inactiveSlideScale={0.94}
