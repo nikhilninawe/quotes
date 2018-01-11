@@ -31,8 +31,6 @@ BackgroundJob.register(backgroundJob);
 
 class MainContent extends Component {
     state = { showModal: false, quoteToShow: '' };    
-    componentWillMount() {
-    }
 
     componentDidMount() {
         PushNotification.configure({
@@ -41,18 +39,8 @@ class MainContent extends Component {
                 this.setState({ showModal: true, quoteToShow: notification.message });
             }    
         });
-        BackgroundJob.schedule({            
-            jobKey: 'myJob',
-            period: 3 * 60 * 60 * 1000,
-            // period: 1000,
-            timeout: 10000,
-            allowExecutionInForeground: true
-        });       
     }
-
-    componentWillReceiveProps() {
-    }
-
+    
     onDecline() {
         this.setState({ showModal: false });
     }

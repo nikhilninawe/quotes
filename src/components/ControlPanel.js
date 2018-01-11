@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { changeHamburgerStatus } from '../actions/index';
-import { Card, CardSection } from './common/index';
+import { CardSection } from './common/index';
 
 class ControlPanel extends Component {
   
@@ -34,4 +32,4 @@ class ControlPanel extends Component {
     }
 }
 
-export default connect(null, { changeHamburgerStatus })(ControlPanel);
+export default ControlPanel;
