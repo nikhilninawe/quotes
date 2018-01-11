@@ -7,7 +7,7 @@ class AboutComponent extends Component {
     render() {
         const url = 'http://nikhilninawe.blogspot.com/2017/11/privacy-policy.html';
         return (
-            <View style={{ paddingTop: 20, flex:1, maxHeight: 150, justifyContent: 'space-around' }}>
+            <View style={{ paddingTop: 20, paddingLeft: 10, paddingRight: 10, flex: 1, maxHeight: 150, justifyContent: 'space-around' }}>
                 <CardSection style={{ flexDirection: 'column', justifyContent: 'space-between', height: 70, paddingBottom: 5 }}>
                      <Text style={{ fontSize: 25 }}> Build version </Text>
                      <Text style={{ paddingLeft: 7, fontSize: 20 }}>2.5</Text>
