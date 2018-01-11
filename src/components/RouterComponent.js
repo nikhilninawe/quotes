@@ -5,6 +5,7 @@ import ControlPanel from './ControlPanel';
 import MainContent from './MainContent';
 import FavoriteComponent from './FavoriteComponent';
 import Settings from './Settings';
+import AboutComponent from './AboutComponent';
 
 const RouterComponent = () => {
     const menuIcon = (<Icon name="menu" size={30} />);
@@ -40,6 +41,13 @@ const RouterComponent = () => {
               key="settings"
               component={Settings}
               title="Settings"
+          />
+          <Scene
+              onBack={() => Actions.main({ reload: false })}
+              back
+              key="about"
+              component={AboutComponent}
+              title="About"
           />
         </Scene>
       </Router>

@@ -98,12 +98,12 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        // applicationId "com.nikhilninawe.quotes"
-        applicationId "com.quotes"
+        applicationId "com.nikhilninawe.quotes"
+        // applicationId "com.quotes"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 14
-        versionName "2.4"
+        versionCode 15
+        versionName "2.5"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -149,6 +149,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-rate')
     compile project(':react-native-vector-icons')
     compile project(':react-native-background-job')
     compile project(':react-native-push-notification')
