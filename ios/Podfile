@@ -12,6 +12,10 @@ target 'quotes' do
     # Pods for testing
     pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+    pod 'RNShare', :path => '../node_modules/react-native-share'
+
+    pod 'RNViewShot', :path => '../node_modules/react-native-view-shot'
+
   end
 
   target 'quotesTests' do

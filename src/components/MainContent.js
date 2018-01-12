@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
+import Share from 'react-native-share';
 import BackgroundJob from 'react-native-background-job';
-import { ShareComponent } from './common/index';
+import { captureRef } from 'react-native-view-shot';
+import ShareImage from './common/ShareImage';
 import GoogleAd from './GoogleAd';
 import SnapCarousel from './SnapCarousel';
 import { PopupQuote } from './PopupQuote';
@@ -45,11 +47,34 @@ class MainContent extends Component {
         this.setState({ showModal: false });
     }
 
+    onPress() {
+        captureRef(this.refs.carousel, {
+            format: 'png',
+            quality: 0.5,
+            result: 'data-uri'
+          })
+          .then(
+            uri => {
+                    const shareImageBase64 = {
+                        message: `${this.props.quote.quote} \n -${this.props.quote.author}`,
+                        title: `Quote by ${this.props.quote.author}`,
+                        url: uri,
+                        subject: 'Inspirational Quote',
+                        snapshotContentContainer: true
+                    };
+                    Share.open(shareImageBase64);
+            },
+            error => console.error('Oops, snapshot failed', error)
+        );
+    }
+
     render() {
         return (
             <View style={{ flex: 1, paddingTop: 20, justifyContent: 'space-between' }} >
-                <SnapCarousel reload={this.props.reload} />         
-                <ShareComponent {...this.props} />
+                <View collapsable={false} ref="carousel" style={{ flex: 1 }}>
+                    <SnapCarousel reload={this.props.reload} /> 
+                </View>        
+                <ShareImage onPress={this.onPress.bind(this)} />
                 <GoogleAd />
                 <PopupQuote
                     visible={this.state.showModal}
@@ -60,7 +85,6 @@ class MainContent extends Component {
             </View>
         );
     }
-
 }
 
 const mapStateToProps = (state) => {
@@ -68,6 +92,6 @@ const mapStateToProps = (state) => {
       quote: state.quote.currentQuote,
      };
   };
-  
+
 export default connect(mapStateToProps, { })(MainContent);
   

@@ -10,7 +10,7 @@ import AboutComponent from './AboutComponent';
 const RouterComponent = () => {
     const menuIcon = (<Icon name="menu" size={30} />);
     return (
-      <Router sceneStyle={{ paddingTop: 20 }}>
+      <Router sceneStyle={{ paddingTop: 5 }}>
         <Scene 
         key='drawer'
         drawer

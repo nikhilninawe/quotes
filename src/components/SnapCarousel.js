@@ -40,16 +40,16 @@ class SnapCarousel extends Component {
     renderCard({ item }) {
         const background = images[item.imageIndex];        
         return (
-            <ScrollView> 
+            <ScrollView ref="view"> 
                 <TouchableWithoutFeedback>
-                <ImageBackground
-                    source={{ uri: background }}
-                    style={{ width: itemWidth }}          
-                >
-                    <Text style={styles.text}>{item.quote}</Text>
-                    <Text style={styles.author}>-{item.author}</Text>
-                 </ImageBackground>
-             </TouchableWithoutFeedback>
+                    <ImageBackground
+                        source={{ uri: background }}
+                        style={{ width: itemWidth }}          
+                    >
+                        <Text style={styles.text}>{item.quote}</Text>
+                        <Text style={styles.author}>-{item.author}</Text>
+                    </ImageBackground>
+                </TouchableWithoutFeedback>
          </ScrollView>
         ); 
     }
@@ -59,7 +59,7 @@ class SnapCarousel extends Component {
             return (<Spinner size="large" />);
         }
         return (
-            <View style={{ flex: 1, justifyContent: 'center', paddingTop: 40, maxHeight: 400 }}>
+            <View style={{ flex: 1, justifyContent: 'center', paddingTop: 10, maxHeight: 400 }}>
                 <Carousel 
                     data={this.props.quotes}
                     renderItem={this.renderCard.bind(this)}
@@ -68,7 +68,7 @@ class SnapCarousel extends Component {
                     loop={false}
                     loopClonesPerSide={0}
                     inactiveSlideScale={0.94}
-                    inactiveSlideOpacity={0.7}
+                    inactiveSlideOpacity={0.0}
                     enableMomentum={false}
                     activeSlideAlignment={'center'}
                     onSnapToItem={this.onSnapToItem.bind(this)}
@@ -84,7 +84,7 @@ const styles = {
         textAlign: 'center',
         backgroundColor: 'transparent',
         minHeight: 100,
-        fontSize: 32,
+        fontSize: 28,
         fontStyle: 'italic',
         fontWeight: 'bold',
       },
