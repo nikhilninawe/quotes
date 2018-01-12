@@ -102,12 +102,11 @@ android {
         // applicationId "com.quotes"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 16
-        versionName "2.6"
+        versionCode 17
+        versionName "2.7"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
-        vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {
         release {
