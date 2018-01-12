@@ -9,12 +9,14 @@ class Settings extends Component {
     
     componentWillMount() {
         AsyncStorage.getItem('notification').then((notification) => {
-            if (JSON.parse(notification)) {
+            if (notification === undefined || notification == null) {
+                this.props.notificationChange(true, '3');
+            } else if (JSON.parse(notification)) {
                 AsyncStorage.getItem('frequency').then((frequency) => {
                     this.props.notificationChange(true, frequency);                    
                 });
             } else {
-                this.props.notificationChange(false, '3');
+                this.props.notificationChange(false, null);
             }
         }).done();
     }

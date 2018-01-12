@@ -18,7 +18,7 @@ const PopupQuote = ({ children, visible = false, onClose }) => {
           <ScrollView style={{ minHeight: 400 }}> 
             <TouchableWithoutFeedback>
                 <ImageBackground
-                  source={require('../assets/leather.jpg')}
+                  source={{ uri: 'https://s3.ap-south-1.amazonaws.com/quotes2.4/leather.jpg' }}
                   style={{ width: 350 }}          
                 >
                   <View style={{ alignItems: 'flex-end' }}>

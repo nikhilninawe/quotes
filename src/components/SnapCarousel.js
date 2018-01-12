@@ -16,8 +16,10 @@ const slideWidth = wp(75);
 const itemHorizontalMargin = wp(2);
 const sliderWidth = viewportWidth;
 const itemWidth = (slideWidth + (itemHorizontalMargin * 2)) + 40;
-const images = [require('../assets/leather.jpg'), require('../assets/beige.jpg'),
- require('../assets/polyester.jpeg'), require('../assets/stock.jpg')];
+const images = ['https://s3.ap-south-1.amazonaws.com/quotes2.4/leather.jpg', 
+'https://s3.ap-south-1.amazonaws.com/quotes2.4/beige.jpg',
+'https://s3.ap-south-1.amazonaws.com/quotes2.4/polyester.jpeg', 
+'https://s3.ap-south-1.amazonaws.com/quotes2.4/stock.jpg'];
 
 class SnapCarousel extends Component {
   
@@ -41,7 +43,7 @@ class SnapCarousel extends Component {
             <ScrollView> 
                 <TouchableWithoutFeedback>
                 <ImageBackground
-                    source={background}
+                    source={{ uri: background }}
                     style={{ width: itemWidth }}          
                 >
                     <Text style={styles.text}>{item.quote}</Text>

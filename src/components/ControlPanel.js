@@ -9,8 +9,8 @@ class ControlPanel extends Component {
   
     render() {
         const homeIcon = (<Icon name="home" size={30} color='green' />);    
-        const starIcon = (<Icon name="star" size={15} color='yellow' />);  
-        const infoIcon = (<Icon name="info" size={15} color='black' />);          
+        const starIcon = (<Icon name="star" size={25} color='black' />);  
+        const infoIcon = (<Icon name="info" size={25} color='black' />);          
         const settingsIcon = (<Icon name="settings" size={30} />);      
         const options = {
           AppleAppID: '2193813192',
@@ -47,11 +47,11 @@ class ControlPanel extends Component {
               />
               <CardSection style={{ borderColor: 'white' }}>
                 {starIcon}
-                <Text onPress={() => Rate.rate(options, () => {})} style={{ fontSize: 15, paddingLeft: 15 }}>Rate App</Text>
+                <Text onPress={() => Rate.rate(options, () => {})} style={{ fontSize: 20, paddingLeft: 15, marginBottom: 5 }}>Rate App</Text>
               </CardSection>
               <CardSection style={{ borderColor: 'white' }}>
                 {infoIcon}
-                <Text onPress={Actions.about} style={{ fontSize: 15, paddingLeft: 15 }}>About</Text>
+                <Text onPress={Actions.about} style={{ fontSize: 20, paddingLeft: 15 }}>About</Text>
               </CardSection>
             </View>  
         </View>
