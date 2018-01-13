@@ -3,8 +3,11 @@ import { View, Text,
      ScrollView, TouchableWithoutFeedback, Dimensions, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
 import Carousel from 'react-native-snap-carousel';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { Spinner } from './common';
 import { getQuote, getSingleQuote, switchState, updateCurrentQuote } from '../actions/QuoteActions';
+import { disableGesture } from '../actions/index';
 
 function wp(percentage) {
     const value = (percentage * viewportWidth) / 100;
@@ -12,7 +15,7 @@ function wp(percentage) {
 }
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const slideHeight = viewportHeight * 0.4;
-const slideWidth = wp(75);
+const slideWidth = wp(85);
 const itemHorizontalMargin = wp(2);
 const sliderWidth = viewportWidth;
 const itemWidth = (slideWidth + (itemHorizontalMargin * 2)) + 40;
@@ -22,11 +25,16 @@ const images = ['https://s3.ap-south-1.amazonaws.com/quotes2.4/leather.jpg',
 'https://s3.ap-south-1.amazonaws.com/quotes2.4/stock.jpg'];
 
 class SnapCarousel extends Component {
-  
     componentWillMount() {
         if (this.props.reload === undefined || this.props.reload) {
             this.props.getQuote();
         }        
+    }
+
+    componentDidMount() {
+        this.timeoutHandle = setTimeout(() => {
+            this.props.disableGesture();
+       }, 7000);
     }
 
     onSnapToItem(slideIndex) {
@@ -59,13 +67,13 @@ class SnapCarousel extends Component {
             return (<Spinner size="large" />);
         }
         return (
-            <View style={{ flex: 1, justifyContent: 'center', paddingTop: 10, maxHeight: 400 }}>
+            <View style={{ flex: 1, justifyContent: 'space-between', maxHeight: 420, alignItems: 'center' }}>
                 <Carousel 
                     data={this.props.quotes}
                     renderItem={this.renderCard.bind(this)}
                     sliderWidth={sliderWidth}
                     itemWidth={itemWidth}   
-                    loop={false}
+                    // loop={false}
                     loopClonesPerSide={0}
                     inactiveSlideScale={0.94}
                     inactiveSlideOpacity={0.0}
@@ -74,6 +82,12 @@ class SnapCarousel extends Component {
                     onSnapToItem={this.onSnapToItem.bind(this)}
                     firstItem={0}
                 />
+                {this.props.swipeGesture && 
+                    <View style={{ flexDirection: 'row' }}>
+                        <Icon name="gesture-swipe-left" size={60} />
+                        <Text style={{ marginTop: 20, marginLeft: 5, fontWeight: 'bold', fontSize: 24 }}>Swipe Left</Text> 
+                    </View>
+                }
              </View>
         );
     }
@@ -84,14 +98,14 @@ const styles = {
         textAlign: 'center',
         backgroundColor: 'transparent',
         minHeight: 100,
-        fontSize: 28,
+        fontSize: 26,
         fontStyle: 'italic',
         fontWeight: 'bold',
       },
 
       author: {
         textAlign: 'right',
-        fontSize: 20,
+        fontSize: 18,
         backgroundColor: 'transparent',
         paddingTop: 20,
         paddingBottom: 10
@@ -111,18 +125,20 @@ const mapStateToProps = state => {
         return ({
             quotes,
             loading: state.quote.loading,
-            index: state.quote.index
+            index: state.quote.index,
+            swipeGesture: state.gesture.swipeGesture
         }
         );
     }   
     return {
         quotes: [],
         loading: state.quote.loading,
-        index: state.quote.index
+        index: state.quote.index,
+        swipeGesture: state.gesture.swipeGesture
     };
 };
 
 export default
  connect(mapStateToProps, 
-    { getQuote, switchState, getSingleQuote, updateCurrentQuote })(SnapCarousel);
+    { getQuote, switchState, getSingleQuote, updateCurrentQuote, disableGesture })(SnapCarousel);
 

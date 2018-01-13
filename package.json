@@ -19,6 +19,7 @@
     "react-native-rest-client": "^0.1.1",
     "react-native-router-flux": "^4.0.0-beta.27",
     "react-native-share": "^1.0.23",
+    "react-native-simple-toast": "0.0.7",
     "react-native-snap-carousel": "^3.4.0",
     "react-native-vector-icons": "^4.4.3",
     "react-native-view-shot": "^2.2.0",

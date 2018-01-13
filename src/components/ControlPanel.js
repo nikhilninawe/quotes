@@ -8,7 +8,8 @@ import { CardSection } from './common/index';
 class ControlPanel extends Component {
   
     render() {
-        const homeIcon = (<Icon name="home" size={30} color='green' />);    
+        const homeIcon = (<Icon name="home" size={30} color='green' />);  
+        const favouriteIcon = (<Icon name="favorite" size={30} color='pink' />);            
         const starIcon = (<Icon name="star" size={25} color='black' />);  
         const infoIcon = (<Icon name="info" size={25} color='black' />);          
         const settingsIcon = (<Icon name="settings" size={30} />);      
@@ -29,10 +30,10 @@ class ControlPanel extends Component {
                 {homeIcon}
                 <Text onPress={Actions.main} style={{ fontSize: 25, paddingLeft: 30 }}>Home</Text>
               </CardSection>
-              {/* <CardSection style={{ borderColor: 'white' }}>
+               {/* <CardSection style={{ borderColor: 'white' }}>
                 {favouriteIcon}
                 <Text onPress={Actions.favourite} style={{ fontSize: 25, paddingLeft: 30 }}>Favorites</Text>
-              </CardSection> */}
+              </CardSection>  */}
               <CardSection style={{ borderColor: 'white' }}>
                 {settingsIcon}
                 <Text onPress={Actions.settings} style={{ fontSize: 25, paddingLeft: 30 }}>Settings</Text>

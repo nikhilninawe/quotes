@@ -1,7 +1,8 @@
 import React from 'react';
 import {
 TouchableOpacity,
-View
+View,
+Text
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -13,6 +14,7 @@ const ShareImage = (props) => {
             >
                 <View style={styles.instructions}>
                     <Icon name="share" size={40} color={'green'} />
+                    <Text style={{ marginTop: 10, marginLeft: 5, fontWeight: 'bold' }}>Share</Text>
                 </View>
             </TouchableOpacity>
         </View>
@@ -27,10 +29,7 @@ const styles = {
       backgroundColor: 'white'
     },
     instructions: {
-      marginTop: 10,
-      marginBottom: 10,
-      marginLeft: 20,
-      marginRight: 20
+        flexDirection: 'row'
     },
   };
 
