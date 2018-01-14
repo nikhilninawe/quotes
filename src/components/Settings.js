@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, Switch, Picker, AsyncStorage } from 'react-native';
 import BackgroundJob from 'react-native-background-job';
+import PushNotification from 'react-native-push-notification';
 import { connect } from 'react-redux';
 import { Card, CardSection } from './common/index';
 import { notificationChange, getSettingsFromDB } from '../actions/NotificationAction';
@@ -37,6 +38,7 @@ class Settings extends Component {
             });    
         } else {
             console.log('Not scheduling myJob');
+            PushNotification.cancelAllLocalNotifications();
         }
     }
 

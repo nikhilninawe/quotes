@@ -19,6 +19,7 @@ class App extends Component {
         storageBucket: 'quotes-df7ec.appspot.com',
         messagingSenderId: '126068011748'
       };
+      
       if (!firebase.apps.length) {
         firebase.initializeApp(config);
       }

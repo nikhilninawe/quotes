@@ -6,3 +6,6 @@ export const CURRENT_QUOTE = 'current_quote_maintainer';
 export const NOTIFICATION_CHANGE = 'notification_change';
 export const USER_ACTION = 'user_action';
 export const DISABLE_GESTURE = 'disable_gesture';
+export const POPUP_OPEN = 'popup_open';
+export const POPUP_CLOSE = 'popup_close';
+

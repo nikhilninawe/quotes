@@ -15,7 +15,7 @@ function wp(percentage) {
 }
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const slideHeight = viewportHeight * 0.4;
-const slideWidth = wp(85);
+const slideWidth = wp(81);
 const itemHorizontalMargin = wp(2);
 const sliderWidth = viewportWidth;
 const itemWidth = (slideWidth + (itemHorizontalMargin * 2)) + 40;
@@ -108,7 +108,8 @@ const styles = {
         fontSize: 18,
         backgroundColor: 'transparent',
         paddingTop: 20,
-        paddingBottom: 10
+        paddingBottom: 10,
+        paddingRight: 10
       },
       card: {
         borderRadius: 4,

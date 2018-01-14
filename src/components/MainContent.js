@@ -13,7 +13,7 @@ import SnapCarousel from './SnapCarousel';
 import { PopupQuote } from './PopupQuote';
 import quotes from '../actions/quotes.json';
 import { CardSection, Spinner } from './common/index';
-import { userAction } from '../actions/index'; 
+import { userAction, popupClose, popupOpen } from '../actions/index'; 
 
 const backgroundJob = {
     jobKey: 'myJob',
@@ -29,6 +29,8 @@ const backgroundJob = {
         PushNotification.localNotificationSchedule({
             message: `${quotes.quotes[randomQuote].quote} \n-${quotes.quotes[randomQuote].author}`,
             date: nextTime,
+            smallIcon: 'ic_notification',
+            largeIcon: 'ic_launcher'
         });
     }
 };
@@ -36,19 +38,18 @@ const backgroundJob = {
 BackgroundJob.register(backgroundJob);
 
 class MainContent extends Component {
-    state = { showModal: false, quoteToShow: '' };    
 
-    componentDidMount() {
+    componentWillMount() {
         PushNotification.configure({
             popInitialNotification: false,            
             onNotification: (notification) => {
-                this.setState({ showModal: true, quoteToShow: notification.message });
-            }    
-        });
+                this.props.popupOpen(notification.message);
+        } });    
+        
     }
-    
+
     onDecline() {
-        this.setState({ showModal: false });
+        this.props.popupClose();
     }
 
     onPress() {
@@ -141,12 +142,14 @@ class MainContent extends Component {
                     {this.renderSave()}
                 </CardSection>
                 <GoogleAd />
-                <PopupQuote
-                    visible={this.state.showModal}
-                    onClose={this.onDecline.bind(this)}
-                >
-                {this.state.quoteToShow}
-                 </PopupQuote>
+                {this.props.popupActive && 
+                    <PopupQuote
+                        visible
+                        onClose={this.onDecline.bind(this)}
+                    >
+                {this.props.quoteToShow}
+                </PopupQuote>
+                }
             </View>
         );
     }
@@ -156,9 +159,11 @@ const mapStateToProps = (state) => {
     return {
       quote: state.quote.currentQuote,
       saveStarted: state.action.saveActive,
-      shareStarted: state.action.shareStarted
+      shareStarted: state.action.shareStarted,
+      popupActive: state.popup.active,
+      quoteToShow: state.popup.quoteToShow
      };
   };
 
-export default connect(mapStateToProps, { userAction })(MainContent);
+export default connect(mapStateToProps, { userAction, popupClose, popupOpen })(MainContent);
   
