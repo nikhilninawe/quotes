@@ -44,8 +44,21 @@ class MainContent extends Component {
             popInitialNotification: false,            
             onNotification: (notification) => {
                 this.props.popupOpen(notification.message);
-        } });    
-        
+        } }); 
+
+        function getNextNotificationTime() {
+            const nextNotifTime = new Date();
+            nextNotifTime.setMinutes(nextNotifTime.getMinutes() + 1);        
+            nextNotifTime.setSeconds(0);
+            return nextNotifTime;
+        }
+        const nextTime = getNextNotificationTime();
+        const randomQuote = Math.floor((Math.random() * quotes.quotes.length) - 1);   
+        PushNotification.localNotification({
+            message: `${quotes.quotes[randomQuote].quote} \n-${quotes.quotes[randomQuote].author}`,
+            smallIcon: 'ic_notification',
+            largeIcon: 'ic_launcher'
+        });
     }
 
     onDecline() {
