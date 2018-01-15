@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native';
-import { NOTIFICATION_CHANGE } from './types';
+import { NOTIFICATION_CHANGE, AUTO_PLAY_EVENT } from './types';
 
 export const notificationChange = (notification, frequency) => {
     return {
@@ -7,6 +7,13 @@ export const notificationChange = (notification, frequency) => {
       payload: { frequency, notification }
     };
   };
+
+export const autoPlay = (enabled) => {
+  return {
+    type: AUTO_PLAY_EVENT,
+    payload: enabled
+  };
+};
 
 const callback = (result) => {
   const x = result[0];

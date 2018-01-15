@@ -14,7 +14,6 @@ function wp(percentage) {
     return Math.round(value);
 }
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
-const slideHeight = viewportHeight * 0.4;
 const slideWidth = wp(81);
 const itemHorizontalMargin = wp(2);
 const sliderWidth = viewportWidth;
@@ -67,12 +66,15 @@ class SnapCarousel extends Component {
             return (<Spinner size="large" />);
         }
         return (
-            <View style={{ flex: 1, justifyContent: 'space-between', maxHeight: 420, alignItems: 'center' }}>
+            <View style={{ flex: 1, justifyContent: 'flex-start', maxHeight: 420, alignItems: 'center' }}>
                 <Carousel 
                     data={this.props.quotes}
                     renderItem={this.renderCard.bind(this)}
                     sliderWidth={sliderWidth}
                     itemWidth={itemWidth}   
+                    autoplay={this.props.autoPlayEnabled}
+                    autoplayInterval={this.props.autoPlayInterval}
+                    lockScrollWhileSnapping
                     // loop={false}
                     loopClonesPerSide={0}
                     inactiveSlideScale={0.94}
@@ -127,7 +129,9 @@ const mapStateToProps = state => {
             quotes,
             loading: state.quote.loading,
             index: state.quote.index,
-            swipeGesture: state.gesture.swipeGesture
+            swipeGesture: state.gesture.swipeGesture,
+            autoPlayEnabled: state.notification.autoPlayEnabled,
+            autoPlayInterval: state.notification.autoPlayInterval
         }
         );
     }   
@@ -135,7 +139,9 @@ const mapStateToProps = state => {
         quotes: [],
         loading: state.quote.loading,
         index: state.quote.index,
-        swipeGesture: state.gesture.swipeGesture
+        swipeGesture: state.gesture.swipeGesture,
+        autoPlayEnabled: state.notification.autoPlayEnabled,
+        autoPlayInterval: state.notification.autoPlayInterval
     };
 };
 

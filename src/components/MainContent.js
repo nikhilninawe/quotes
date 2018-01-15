@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, CameraRoll, Text } from 'react-native';
+import { View, TouchableOpacity, CameraRoll, Text, Switch, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
 import Share from 'react-native-share';
@@ -13,7 +13,7 @@ import SnapCarousel from './SnapCarousel';
 import { PopupQuote } from './PopupQuote';
 import quotes from '../actions/quotes.json';
 import { CardSection, Spinner } from './common/index';
-import { userAction, popupClose, popupOpen } from '../actions/index'; 
+import { userAction, popupClose, popupOpen, autoPlay } from '../actions/index'; 
 
 const backgroundJob = {
     jobKey: 'myJob',
@@ -44,8 +44,7 @@ class MainContent extends Component {
             popInitialNotification: false,            
             onNotification: (notification) => {
                 this.props.popupOpen(notification.message);
-        } });    
-        
+        } });     
     }
 
     onDecline() {
@@ -133,6 +132,18 @@ class MainContent extends Component {
     render() {
         return (
             <View style={{ flex: 1, paddingTop: 20, justifyContent: 'space-between' }} >
+                <View style={{ alignItems: 'flex-end', height: 40, flexDirection: 'row', justifyContent: 'flex-end' }}>
+                    <Text style={{ fontSize: 20 }} > Auto Play </Text>
+                    <Switch
+                            value={this.props.autoPlayEnabled}
+                            name="toggle-switch" 
+                            onValueChange={(value) => { 
+                                AsyncStorage.setItem('autoPlay', JSON.stringify(value));  
+                                this.props.autoPlay(value);                            
+                            }}
+
+                    />
+                </View>
                 <View collapsable={false} ref="carousel" style={{ flex: 1 }}>
                     <SnapCarousel reload={this.props.reload} /> 
                 </View>
@@ -161,9 +172,11 @@ const mapStateToProps = (state) => {
       saveStarted: state.action.saveActive,
       shareStarted: state.action.shareStarted,
       popupActive: state.popup.active,
-      quoteToShow: state.popup.quoteToShow
+      quoteToShow: state.popup.quoteToShow,
+      autoPlayEnabled: state.notification.autoPlayEnabled,
+      autoPlayInterval: state.notification.autoPlayInterval
      };
   };
 
-export default connect(mapStateToProps, { userAction, popupClose, popupOpen })(MainContent);
+export default connect(mapStateToProps, { userAction, popupClose, popupOpen, autoPlay })(MainContent);
   
