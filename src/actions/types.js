@@ -8,4 +8,5 @@ export const USER_ACTION = 'user_action';
 export const DISABLE_GESTURE = 'disable_gesture';
 export const POPUP_OPEN = 'popup_open';
 export const POPUP_CLOSE = 'popup_close';
+export const AUTO_PLAY_EVENT = 'auto_play_event';
 

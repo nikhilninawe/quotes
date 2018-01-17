@@ -68,7 +68,7 @@ const styles = {
     fontWeight: 'bold',
   },
 
-  author: {
+  author:{
     textAlign: 'right',
     fontSize: 20,
     backgroundColor: 'transparent',

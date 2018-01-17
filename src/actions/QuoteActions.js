@@ -19,16 +19,6 @@ function timeoutPromise(timeout, err, promise) {
   });
 }
 
-const testQuote = (dispatch) => {
-  dispatch({
-    type: FETCH_QUOTE,
-    payload: {
-               quoteText: staticQuotes.quotes[13].quote + staticQuotes.quotes[13].quote,
-               quoteAuthor: staticQuotes.quotes[13].author
-             }
-  });
-};
-
 const prodQuote = (dispatch) => {
   const imageIndex = Math.floor(Math.random() * imagesSize);  
   timeoutPromise(300, new Error('Timed Out!'), api.getQuote())
