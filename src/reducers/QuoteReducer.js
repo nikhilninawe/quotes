@@ -1,8 +1,17 @@
 
-import { FETCH_QUOTE, FETCH_START, FETCH_SINGLE_QUOTE, SWITCH_STATE, CURRENT_QUOTE } from '../actions/types';
+import {
+  FETCH_QUOTE,
+  FETCH_START,
+  FETCH_SINGLE_QUOTE,
+  SWITCH_STATE,
+  CURRENT_QUOTE } from '../actions/types';
 
-const INITIAL_STATE = { current: [], next: [], loading: false, count: 0, 
-  currentQuote: null, imageIndex: 0, showModal: false };
+const INITIAL_STATE = {
+  current: [],
+  next: [],
+  loading: false,
+  count: 0,
+  currentQuote: null };
 let THRESHOLD = 5;
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, CameraRoll, Text, Switch, AsyncStorage } from 'react-native';
+import { View, TouchableOpacity, CameraRoll, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
 import Share from 'react-native-share';
@@ -13,19 +13,19 @@ import SnapCarousel from './SnapCarousel';
 import { PopupQuote } from './PopupQuote';
 import quotes from '../actions/quotes.json';
 import { CardSection, Spinner } from './common/index';
-import { userAction, popupClose, popupOpen, autoPlay } from '../actions/index'; 
+import { userAction, popupClose, popupOpen } from '../actions/index';
 
 const backgroundJob = {
     jobKey: 'myJob',
-    job: () => { 
+    job: () => {
         function getNextNotificationTime() {
             const nextNotifTime = new Date();
-            nextNotifTime.setMinutes(nextNotifTime.getMinutes() + 1);        
+            nextNotifTime.setMinutes(nextNotifTime.getMinutes() + 1);
             nextNotifTime.setSeconds(0);
             return nextNotifTime;
         }
         const nextTime = getNextNotificationTime();
-        const randomQuote = Math.floor((Math.random() * quotes.quotes.length) - 1);   
+        const randomQuote = Math.floor((Math.random() * quotes.quotes.length) - 1);
         PushNotification.localNotificationSchedule({
             message: `${quotes.quotes[randomQuote].quote} \n-${quotes.quotes[randomQuote].author}`,
             date: nextTime,
@@ -41,10 +41,10 @@ class MainContent extends Component {
 
     componentWillMount() {
         PushNotification.configure({
-            popInitialNotification: false,            
+            popInitialNotification: false,
             onNotification: (notification) => {
                 this.props.popupOpen(notification.message);
-        } });     
+        } });
     }
 
     onDecline() {
@@ -52,7 +52,7 @@ class MainContent extends Component {
     }
 
     onPress() {
-        this.props.userAction('share_start');        
+        this.props.userAction('share_start');
         captureRef(this.refs.carousel, {
             format: 'png',
             quality: 0.5,
@@ -60,7 +60,7 @@ class MainContent extends Component {
           })
           .then(
             uri => {
-                    this.props.userAction('share_end');                    
+                    this.props.userAction('share_end');
                     const shareImageBase64 = {
                         // message: `${this.props.quote.quote} \n -${this.props.quote.author}`,
                         title: `Quote by ${this.props.quote.author}`,
@@ -85,29 +85,29 @@ class MainContent extends Component {
             uri => {
                 console.log(`Saving image to Gallery ${uri}`);
                 CameraRoll.saveToCameraRoll(uri, 'photo')
-                .then((successful) => { 
-                    console.log(`Save successful ${successful}`); 
-                    this.props.userAction('save_end');   
-                    Toast.show('Successfully saved quote to Gallery', 10);                 
+                .then((successful) => {
+                    console.log(`Save successful ${successful}`);
+                    this.props.userAction('save_end');
+                    Toast.show('Successfully saved quote to Gallery', 10);
                 })
                 .catch(() => { this.props.userAction('save_end'); });
             },
             error => console.error('Oops, snapshot failed', error)
-        );         
+        );
     }
 
     renderSave() {
         if (this.props.saveStarted) {
             return (
             <View>
-                <Spinner size="small" />
+                <Spinner size="large" />
             </View>
-        );            
+        );
         }
         return (
-            <TouchableOpacity 
+            <TouchableOpacity
                onPress={this.onSave.bind(this)}
-            >   
+            >
                 <View style={{ flexDirection: 'row' }}>
                     <Icon name="save" size={40} />
                     <Text style={{ marginTop: 10, marginLeft: 5, fontWeight: 'bold' }}>Save</Text>
@@ -120,9 +120,9 @@ class MainContent extends Component {
         if (this.props.shareStarted) {
             return (
             <View>
-                <Spinner size="small" />
+                <Spinner size="large" />
             </View>
-        );            
+        );
         }
         return (
             <ShareImage onPress={this.onPress.bind(this)} />
@@ -132,28 +132,16 @@ class MainContent extends Component {
     render() {
         return (
             <View style={{ flex: 1, paddingTop: 20, justifyContent: 'space-between' }} >
-                <View style={{ alignItems: 'flex-end', height: 40, flexDirection: 'row', justifyContent: 'flex-end' }}>
-                    <Text style={{ fontSize: 20 }} > Auto Play </Text>
-                    <Switch
-                            value={this.props.autoPlayEnabled}
-                            name="toggle-switch" 
-                            onValueChange={(value) => { 
-                                AsyncStorage.setItem('autoPlay', JSON.stringify(value));  
-                                this.props.autoPlay(value);                            
-                            }}
-
-                    />
-                </View>
                 <View collapsable={false} ref="carousel" style={{ flex: 1 }}>
-                    <SnapCarousel reload={this.props.reload} /> 
+                    <SnapCarousel reload={this.props.reload} />
                 </View>
-                <CardSection style={{ justifyContent: 'space-around' }}>        
+                <CardSection style={{ justifyContent: 'space-around' }}>
                     {this.renderShare()}
                     {/* <Icon name="favorite" size={40} color='pink' />     */}
                     {this.renderSave()}
                 </CardSection>
                 <GoogleAd />
-                {this.props.popupActive && 
+                {this.props.popupActive &&
                     <PopupQuote
                         visible
                         onClose={this.onDecline.bind(this)}
@@ -172,11 +160,9 @@ const mapStateToProps = (state) => {
       saveStarted: state.action.saveActive,
       shareStarted: state.action.shareStarted,
       popupActive: state.popup.active,
-      quoteToShow: state.popup.quoteToShow,
-      autoPlayEnabled: state.notification.autoPlayEnabled,
-      autoPlayInterval: state.notification.autoPlayInterval
+      quoteToShow: state.popup.quoteToShow
      };
   };
 
-export default connect(mapStateToProps, { userAction, popupClose, popupOpen, autoPlay })(MainContent);
-  
+export default connect(mapStateToProps,
+  { userAction, popupClose, popupOpen })(MainContent);

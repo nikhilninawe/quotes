@@ -99,11 +99,10 @@ android {
 
     defaultConfig {
         applicationId "com.nikhilninawe.quotes"
-        // applicationId "com.quotes"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 19
-        versionName "2.9"
+        versionCode 30
+        versionName "3.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

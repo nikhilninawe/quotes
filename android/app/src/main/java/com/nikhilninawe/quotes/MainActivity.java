@@ -1,4 +1,4 @@
-package com.quotes;
+package com.nikhilninawe.quotes;
 
 import com.facebook.react.ReactActivity;
 
