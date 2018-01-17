@@ -46,12 +46,6 @@ class MainContent extends Component {
                 this.props.popupOpen(notification.message);
             }
           });
-      const randomQuote = Math.floor((Math.random() * quotes.quotes.length) - 1);
-      PushNotification.localNotification({
-          message: `${quotes.quotes[randomQuote].quote} \n-${quotes.quotes[randomQuote].author}`,
-          smallIcon: 'ic_notification',
-          largeIcon: 'ic_launcher'
-        });
     }
 
     onDecline() {
