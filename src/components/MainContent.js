@@ -11,7 +11,7 @@ import ShareImage from './common/ShareImage';
 import GoogleAd from './GoogleAd';
 import SnapCarousel from './SnapCarousel';
 import { PopupQuote } from './PopupQuote';
-import quotes from '../actions/quotes.json';
+import quotes from '../data/english.json';
 import { CardSection, Spinner } from './common/index';
 import { userAction, popupClose, popupOpen } from '../actions/index';
 

@@ -6,7 +6,7 @@ import {
   FETCH_SINGLE_QUOTE,
   SWITCH_STATE,
   CURRENT_QUOTE } from './types';
-import staticQuotes from './quotes.json';
+import staticQuotes from '../data/english.json';
 
 const api = new QuoteApi();
 const tApi = new TalaikisApi();
