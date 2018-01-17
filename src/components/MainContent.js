@@ -44,7 +44,8 @@ class MainContent extends Component {
             popInitialNotification: false,
             onNotification: (notification) => {
                 this.props.popupOpen(notification.message);
-        } });
+            }
+          });
     }
 
     onDecline() {
