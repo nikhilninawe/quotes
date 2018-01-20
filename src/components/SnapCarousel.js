@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text,
-     ScrollView, TouchableWithoutFeedback, Dimensions, ImageBackground } from 'react-native';
+     ScrollView,
+  TouchableWithoutFeedback, Dimensions, ImageBackground, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { Spinner } from './common';
-import { getQuote, getSingleQuote, switchState, updateCurrentQuote } from '../actions/QuoteActions';
-import { disableGesture } from '../actions/index';
+import { getQuotes, getSingleQuote, switchState, updateCurrentQuote, languageChange } from '../actions/index';
 
 function wp(percentage) {
     const value = (percentage * viewportWidth) / 100;
@@ -24,30 +24,43 @@ const images = ['https://s3.ap-south-1.amazonaws.com/quotes2.4/leather.jpg',
 'https://s3.ap-south-1.amazonaws.com/quotes2.4/stock.jpg'];
 
 class SnapCarousel extends Component {
+    state = { gesture: true };
     componentWillMount() {
         if (this.props.reload === undefined
            || this.props.reload
            || this.props.quotes.length === 0) {
-            this.props.getQuote();
+          this.getCache('language');
         }
     }
 
     componentDidMount() {
         this.timeoutHandle = setTimeout(() => {
-            this.props.disableGesture();
+            this.setState({ gesture: false });
         }, 7000);
     }
 
     onSnapToItem(slideIndex) {
-        this.props.getSingleQuote();
+        this.props.getSingleQuote(this.props.language);
         this.props.updateCurrentQuote(this.props.quotes[slideIndex]);
         if (slideIndex === this.props.quotes.length - 1) {
             this.props.switchState();
         }
     }
 
+    async getCache(key) {
+      const value = await AsyncStorage.getItem(key);
+      let lang = 'en';
+      if (value) {
+        lang = JSON.parse(value).value;
+      }
+      console.log(`Language: ${lang}`);
+      this.props.getQuote(lang);
+      this.props.languageChange({ value: lang});
+    }
+
     renderCard({ item }) {
-        const background = images[item.imageIndex];
+      const imageIndex = Math.floor(Math.random() * images.length);
+      const background = images[imageIndex];
         return (
             <ScrollView ref="view">
                 <TouchableWithoutFeedback>
@@ -91,7 +104,7 @@ class SnapCarousel extends Component {
                     onSnapToItem={this.onSnapToItem.bind(this)}
                     firstItem={0}
                 />
-                {this.props.swipeGesture &&
+                {this.state.gesture &&
                     <View style={{ flexDirection: 'row' }}>
                         <Icon name="gesture-swipe-left" size={60} />
                         <Text
@@ -141,13 +154,12 @@ const mapStateToProps = state => {
       quotes: state.quote.current,
       loading: state.quote.loading,
       index: state.quote.index,
-      swipeGesture: state.gesture.swipeGesture,
       autoplayEnabled: state.notification.autoplayEnabled,
-      autoplayInterval: state.notification.autoplayInterval
-
+      autoplayInterval: state.notification.autoplayInterval,
+      language: state.quote.language
     });
 };
 
 export default
  connect(mapStateToProps,
-    { getQuote, switchState, getSingleQuote, updateCurrentQuote, disableGesture })(SnapCarousel);
+    { getQuote: getQuotes, switchState, getSingleQuote, updateCurrentQuote, languageChange })(SnapCarousel);

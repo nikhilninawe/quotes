@@ -9,7 +9,7 @@ export default class TalaikisApi extends RestClient {
     return this.GET('/quotes/');
   }
 
-  getRandomQuote() {
+  getSingleQuote() {
     return this.GET('/quotes/random/');
   }
 }

@@ -5,7 +5,7 @@ export default class QuoteApi extends RestClient {
     super('http://api.forismatic.com/api/1.0');
   }
 
-  getQuote() {
-    return this.GET('/getQuote?method=getQuote&format=json&key=&lang=en');
+  getQuote(language = 'en') {
+    return this.GET(`/getQuote?method=getQuote&format=json&key=&lang=${language}`);
   }
 }

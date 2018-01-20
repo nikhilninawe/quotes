@@ -9,11 +9,13 @@ class ControlPanel extends Component {
   
     render() {
         const homeIcon = (<Icon name="home" size={30} color='green' />);  
-        const favouriteIcon = (<Icon name="favorite" size={30} color='pink' />);            
+        // const favouriteIcon = (<Icon name="favorite" size={30} color='pink' />);
         const starIcon = (<Icon name="star" size={25} color='black' />);  
-        const infoIcon = (<Icon name="info" size={25} color='black' />);          
-        const settingsIcon = (<Icon name="settings" size={30} />);      
-        const options = {
+        const infoIcon = (<Icon name="info" size={25} color='black' />);
+        const settingsIcon = (<Icon name="settings" size={30} />);
+
+        const languageIcon = (<Icon name="language" size={30} color='blue' />);
+      const options = {
           AppleAppID: '2193813192',
           GooglePackageName: 'com.nikhilninawe.quotes',
           AmazonPackageName: 'com.nikhilninawe.quotes',
@@ -30,10 +32,11 @@ class ControlPanel extends Component {
                 {homeIcon}
                 <Text onPress={Actions.main} style={{ fontSize: 25, paddingLeft: 30 }}>Home</Text>
               </CardSection>
-               {/* <CardSection style={{ borderColor: 'white' }}>
-                {favouriteIcon}
-                <Text onPress={Actions.favourite} style={{ fontSize: 25, paddingLeft: 30 }}>Favorites</Text>
-              </CardSection>  */}
+               { <CardSection style={{ borderColor: 'white' }}>
+                {languageIcon}
+                <Text onPress={Actions.language} style={{ fontSize: 25, paddingLeft: 30 }}>Language</Text>
+              </CardSection>
+               }
               <CardSection style={{ borderColor: 'white' }}>
                 {settingsIcon}
                 <Text onPress={Actions.settings} style={{ fontSize: 25, paddingLeft: 30 }}>Settings</Text>

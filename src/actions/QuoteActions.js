@@ -5,12 +5,14 @@ import {
   FETCH_START, 
   FETCH_SINGLE_QUOTE,
   SWITCH_STATE,
-  CURRENT_QUOTE } from './types';
+  CURRENT_QUOTE,
+  LANGUAGE_CHANGE } from './types';
 import staticQuotes from '../data/english.json';
+import hindiQuotes from '../data/hindi';
+import russianQuotes from '../data/russian';
 
 const api = new QuoteApi();
 const tApi = new TalaikisApi();
-const imagesSize = 4;
 
 function timeoutPromise(timeout, err, promise) {
   return new Promise((resolve, reject) => {
@@ -19,16 +21,14 @@ function timeoutPromise(timeout, err, promise) {
   });
 }
 
-const prodQuote = (dispatch) => {
-  const imageIndex = Math.floor(Math.random() * imagesSize);  
-  timeoutPromise(300, new Error('Timed Out!'), api.getQuote())
+const prodQuote = (dispatch, language) => {
+  timeoutPromise(300, new Error('Timed Out!'), api.getQuote(language))
      .then(response => {
           dispatch({
             type: FETCH_SINGLE_QUOTE,
             payload: {
               quote: response.quoteText,
-              author: response.quoteAuthor,
-              imageIndex
+              author: response.quoteAuthor
             }
           });
      })
@@ -40,17 +40,10 @@ const prodQuote = (dispatch) => {
          type: FETCH_SINGLE_QUOTE,
          payload: {
                     quote: quote.quote,
-                    author: quote.author,
-                    imageIndex
+                    author: quote.author
                   }
        });
      });
-};
-
-const getModifiedQuotes = quotes => {
-  quotes.forEach(quote => {
-    quote.imageIndex = Math.floor((Math.random() * imagesSize));
-  });
 };
 
 const talaikisQuotes = (dispatch) => {
@@ -58,7 +51,6 @@ const talaikisQuotes = (dispatch) => {
   timeoutPromise(3000, new Error('Timed Out!'), tApi.getQuote())
       .then(response => {
         const quotes = response.splice(randomQuote, 10);
-        getModifiedQuotes(quotes);
         dispatch({
           type: FETCH_QUOTE,
           payload: quotes
@@ -67,7 +59,6 @@ const talaikisQuotes = (dispatch) => {
       .catch(error => {
         console.log(error);
         const quote = staticQuotes.quotes.splice(randomQuote, 10);
-        getModifiedQuotes(quote);
         dispatch({
           type: FETCH_QUOTE,
           payload: quote
@@ -75,49 +66,50 @@ const talaikisQuotes = (dispatch) => {
       });
 };
 
-const talaikisRandomQuote = (dispatch) => {
-  const randomQuote = Math.floor((Math.random() * 90) - 1);  
-  timeoutPromise(300, new Error('Timed Out!'), tApi.getRandomQuote())
-      .then(response => {
-        dispatch({
-          type: FETCH_QUOTE,
-          payload: {
-            quote: response.quote,
-            author: response.author
-          }
-        });
-      })
-      .catch(error => {
-        console.log(error);
-        const quote = staticQuotes.quotes[randomQuote];
-        getModifiedQuotes(quote);
-        dispatch({
-          type: FETCH_QUOTE,
-          payload: {
-            quote: quote.quote,
-            author: quote.author
-          }
-        });
-      });
+
+export const getQuotes = (language = 'en') => {
+  switch (language) {
+    case 'en':
+      return (dispatch) => {
+        dispatch({ type: FETCH_START });
+        talaikisQuotes(dispatch);
+      };
+    case 'hi':
+      return {
+        type: FETCH_QUOTE,
+        payload: hindiQuotes.quotes,
+      };
+    case 'ru':
+      return {
+        type: FETCH_QUOTE,
+        payload: russianQuotes.quotes,
+      };
+    default:
+      break;
+  }
 };
 
-export const getQuote = () => {
-  return (dispatch) => {
-      dispatch({ type: FETCH_START });
-      talaikisQuotes(dispatch);
-  };
-};
-
-export const getRandomQuote = () => {
-  return (dispatch) => {
-    talaikisRandomQuote(dispatch);
-  };
-};
-
-export const getSingleQuote = () => {
-  return (dispatch) => {
-    prodQuote(dispatch);
-  };
+export const getSingleQuote = (language = 'en') => {
+  switch (language) {
+    case 'en':
+    case 'ru':
+      return (dispatch) => {
+        prodQuote(dispatch, language);
+      };
+    case 'hi': {
+      const randomQuote = Math.floor((Math.random() * hindiQuotes.quotes.length));
+      console.log(randomQuote);
+      return {
+        type: FETCH_SINGLE_QUOTE,
+        payload: {
+          quote: hindiQuotes.quotes[randomQuote].quote,
+          author: hindiQuotes.quotes[randomQuote].author
+        }
+      };
+    }
+    default:
+      break;
+  }
 };
 
 export const switchState = () => {
@@ -130,6 +122,13 @@ export const updateCurrentQuote = (quote) => {
   return {
     type: CURRENT_QUOTE,
     payload: quote
+  };
+};
+
+export const languageChange = (language) => {
+  return {
+    type: LANGUAGE_CHANGE,
+    payload: language
   };
 };
 

@@ -4,14 +4,17 @@ import {
   FETCH_START,
   FETCH_SINGLE_QUOTE,
   SWITCH_STATE,
-  CURRENT_QUOTE } from '../actions/types';
+  CURRENT_QUOTE,
+  LANGUAGE_CHANGE } from '../actions/types';
 
 const INITIAL_STATE = {
   current: [],
   next: [],
   loading: false,
   count: 0,
-  currentQuote: null };
+  currentQuote: null,
+  language: 'en'
+};
 let THRESHOLD = 5;
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -51,6 +54,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentQuote: action.payload
+      };
+    case LANGUAGE_CHANGE:
+      return {
+        ...state,
+        language: action.payload.value
       };
     default:
         return state;

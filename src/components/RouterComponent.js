@@ -3,9 +3,9 @@ import { Router, Scene, Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ControlPanel from './ControlPanel';
 import MainContent from './MainContent';
-import FavoriteComponent from './FavoriteComponent';
 import Settings from './Settings';
 import AboutComponent from './AboutComponent';
+import Language from './Language';
 
 const RouterComponent = () => {
     const menuIcon = (<Icon name="menu" size={30} />);
@@ -23,16 +23,16 @@ const RouterComponent = () => {
           <Scene
             key="main"
             component={MainContent}
-            title="Inspirational Quotes"
+            title="quotes"
             initial
           />
   
           <Scene
-            onBack={() => Actions.main({ reload: false })}
+            onBack={() => Actions.main({ reload: true })}
             back
-            key="favourite"
-            component={FavoriteComponent}
-            title="Favorites"
+            key="language"
+            component={Language}
+            title="Language"
           />
 
           <Scene
