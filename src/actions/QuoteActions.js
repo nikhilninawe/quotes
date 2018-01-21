@@ -13,6 +13,7 @@ import russianQuotes from '../data/russian';
 
 const api = new QuoteApi();
 const tApi = new TalaikisApi();
+const imagesSize = 4;
 
 function timeoutPromise(timeout, err, promise) {
   return new Promise((resolve, reject) => {
@@ -21,14 +22,22 @@ function timeoutPromise(timeout, err, promise) {
   });
 }
 
+const getModifiedQuotes = quotes => {
+  quotes.forEach(quote => {
+    quote.imageIndex = Math.floor((Math.random() * imagesSize));
+  });
+};
+
 const prodQuote = (dispatch, language) => {
+  const imageIndex = Math.floor(Math.random() * imagesSize);
   timeoutPromise(300, new Error('Timed Out!'), api.getQuote(language))
      .then(response => {
           dispatch({
             type: FETCH_SINGLE_QUOTE,
             payload: {
               quote: response.quoteText,
-              author: response.quoteAuthor
+              author: response.quoteAuthor,
+              imageIndex
             }
           });
      })
@@ -40,7 +49,8 @@ const prodQuote = (dispatch, language) => {
          type: FETCH_SINGLE_QUOTE,
          payload: {
                     quote: quote.quote,
-                    author: quote.author
+                    author: quote.author,
+                    imageIndex
                   }
        });
      });
@@ -51,6 +61,7 @@ const talaikisQuotes = (dispatch) => {
   timeoutPromise(3000, new Error('Timed Out!'), tApi.getQuote())
       .then(response => {
         const quotes = response.splice(randomQuote, 10);
+        getModifiedQuotes(quotes);
         dispatch({
           type: FETCH_QUOTE,
           payload: quotes
@@ -59,6 +70,7 @@ const talaikisQuotes = (dispatch) => {
       .catch(error => {
         console.log(error);
         const quote = staticQuotes.quotes.splice(randomQuote, 10);
+        getModifiedQuotes(quote);
         dispatch({
           type: FETCH_QUOTE,
           payload: quote
@@ -74,22 +86,29 @@ export const getQuotes = (language = 'en') => {
         dispatch({ type: FETCH_START });
         talaikisQuotes(dispatch);
       };
-    case 'hi':
+    case 'hi': {
+      const quotes = hindiQuotes.quotes;
+      getModifiedQuotes(quotes);
       return {
         type: FETCH_QUOTE,
-        payload: hindiQuotes.quotes,
+        payload: quotes,
       };
-    case 'ru':
+    }
+    case 'ru': {
+      const quotes = russianQuotes.quotes;
+      getModifiedQuotes(quotes);
       return {
         type: FETCH_QUOTE,
-        payload: russianQuotes.quotes,
+        payload: quotes,
       };
+    }
     default:
       break;
   }
 };
 
 export const getSingleQuote = (language = 'en') => {
+  const imageIndex = Math.floor(Math.random() * imagesSize);
   switch (language) {
     case 'en':
     case 'ru':
@@ -98,12 +117,12 @@ export const getSingleQuote = (language = 'en') => {
       };
     case 'hi': {
       const randomQuote = Math.floor((Math.random() * hindiQuotes.quotes.length));
-      console.log(randomQuote);
       return {
         type: FETCH_SINGLE_QUOTE,
         payload: {
           quote: hindiQuotes.quotes[randomQuote].quote,
-          author: hindiQuotes.quotes[randomQuote].author
+          author: hindiQuotes.quotes[randomQuote].author,
+          imageIndex
         }
       };
     }

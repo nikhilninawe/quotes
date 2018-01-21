@@ -1,9 +1,16 @@
-import { NOTIFICATION_CHANGE, AUTO_PLAY_EVENT } from '../actions/types';
+import { NOTIFICATION_CHANGE, AUTO_PLAY_EVENT, NOTIFICATION_LOAD } from '../actions/types';
 
-const INITIAL_STATE = { notification: true, frequency: 3, autoplayEnabled: false, autoplayInterval: 30 };
+const INITIAL_STATE = {
+  notification: true,
+  frequency: 3,
+  autoplayEnabled: false,
+  autoplayInterval: 30
+};
+
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case NOTIFICATION_CHANGE :
+        case NOTIFICATION_LOAD:
             return {
                 ...state,
                 notification: action.payload.notification,

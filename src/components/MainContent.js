@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, CameraRoll, Text } from 'react-native';
+import { View, TouchableOpacity, CameraRoll, Text, AsyncStorage } from 'react-native'
 import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
 import Share from 'react-native-share';
@@ -13,7 +13,9 @@ import SnapCarousel from './SnapCarousel';
 import { PopupQuote } from './PopupQuote';
 import quotes from '../data/english.json';
 import { CardSection, Spinner } from './common/index';
-import { userAction, popupClose, popupOpen } from '../actions/index';
+import { userAction, popupClose, popupOpen,
+  loadNotificationSetting,
+   autoplay } from '../actions/index';
 
 const backgroundJob = {
     jobKey: 'myJob',
@@ -40,12 +42,36 @@ BackgroundJob.register(backgroundJob);
 class MainContent extends Component {
 
     componentWillMount() {
-        PushNotification.configure({
-            popInitialNotification: false,
-            onNotification: (notification) => {
-                this.props.popupOpen(notification.message);
-            }
+      PushNotification.configure({
+          popInitialNotification: false,
+          onNotification: (notification) => {
+              this.props.popupOpen(notification.message);
+          }
+        });
+
+      AsyncStorage.getItem('notification').then((notification) => {
+        if (notification === undefined || notification == null) {
+          this.props.loadNotificationSetting(true, '3');
+        } else if (JSON.parse(notification)) {
+          AsyncStorage.getItem('frequency').then((frequency) => {
+            this.props.loadNotificationSetting(true, frequency);
+          }).done();
+        } else {
+          this.props.loadNotificationSetting(false, '3');
+        }
+      }).done();
+
+      AsyncStorage.getItem('autoplay').then((autoplayEnabled) => {
+        if (autoplayEnabled === undefined || autoplayEnabled == null) {
+          this.props.autoplay(false, '30');
+        } else if (JSON.parse(autoplayEnabled)) {
+          AsyncStorage.getItem('autoplayInterval').then((interval) => {
+            this.props.autoplay(true, interval);
           });
+        } else {
+          this.props.autoplay(false, '30');
+        }
+      }).done();
     }
 
     onDecline() {
@@ -166,4 +192,4 @@ const mapStateToProps = (state) => {
   };
 
 export default connect(mapStateToProps,
-  { userAction, popupClose, popupOpen })(MainContent);
+  { userAction, popupClose, popupOpen, autoplay, loadNotificationSetting })(MainContent);

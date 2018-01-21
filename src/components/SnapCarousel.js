@@ -7,7 +7,8 @@ import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { Spinner } from './common';
-import { getQuotes, getSingleQuote, switchState, updateCurrentQuote, languageChange } from '../actions/index';
+import { getQuotes,
+  getSingleQuote, switchState, updateCurrentQuote, languageChange } from '../actions/index';
 
 function wp(percentage) {
     const value = (percentage * viewportWidth) / 100;
@@ -54,13 +55,12 @@ class SnapCarousel extends Component {
         lang = JSON.parse(value).value;
       }
       console.log(`Language: ${lang}`);
-      this.props.getQuote(lang);
-      this.props.languageChange({ value: lang});
+      this.props.getQuotes(lang);
+      this.props.languageChange({ value: lang });
     }
 
     renderCard({ item }) {
-      const imageIndex = Math.floor(Math.random() * images.length);
-      const background = images[imageIndex];
+      const background = images[item.imageIndex];
         return (
             <ScrollView ref="view">
                 <TouchableWithoutFeedback>
@@ -162,4 +162,4 @@ const mapStateToProps = state => {
 
 export default
  connect(mapStateToProps,
-    { getQuote: getQuotes, switchState, getSingleQuote, updateCurrentQuote, languageChange })(SnapCarousel);
+    { getQuotes, switchState, getSingleQuote, updateCurrentQuote, languageChange })(SnapCarousel);

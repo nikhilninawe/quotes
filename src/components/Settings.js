@@ -4,34 +4,12 @@ import BackgroundJob from 'react-native-background-job';
 import PushNotification from 'react-native-push-notification';
 import { connect } from 'react-redux';
 import { Card, CardSection } from './common/index';
-import { notificationChange, autoplay } from '../actions/index';
+import { notificationChange, autoplay, loadNotificationSetting } from '../actions/index';
 
 class Settings extends Component {
 
     componentWillMount() {
-      AsyncStorage.getItem('notification').then((notification) => {
-        if (notification === undefined || notification == null) {
-          this.props.notificationChange(true, '3');
-        } else if (JSON.parse(notification)) {
-          AsyncStorage.getItem('frequency').then((frequency) => {
-            this.props.notificationChange(true, frequency);
-          });
-        } else {
-            this.props.notificationChange(false, '3');
-        }
-      }).done();
 
-      AsyncStorage.getItem('autoplay').then((autoplayEnabled) => {
-        if (autoplayEnabled === undefined || autoplayEnabled == null) {
-          this.props.autoplay(false, '30');
-        } else if (JSON.parse(autoplayEnabled)) {
-          AsyncStorage.getItem('autoplayInterval').then((interval) => {
-            this.props.autoplay(true, interval);
-          });
-        } else {
-          this.props.autoplay(false, '30');
-        }
-      }).done();
     }
 
     applyNotificationChange(notification, frequency) {
@@ -130,4 +108,4 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps,
-  { notificationChange, autoplay })(Settings);
+  { notificationChange, autoplay, loadNotificationSetting })(Settings);
