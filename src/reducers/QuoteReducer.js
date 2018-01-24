@@ -26,6 +26,7 @@ export default (state = INITIAL_STATE, action) => {
             current: action.payload,
             currentQuote: action.payload[0],
             loading: false,
+            next: []
       };
     }
     case FETCH_SINGLE_QUOTE: {

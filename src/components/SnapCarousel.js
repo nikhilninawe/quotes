@@ -95,7 +95,6 @@ class SnapCarousel extends Component {
                     autoplayInterval={this.props.autoplayInterval * 1000}
                     autoplayDelay={0}
                     lockScrollWhileSnapping
-                    // loop={false}
                     loopClonesPerSide={0}
                     inactiveSlideScale={0.94}
                     inactiveSlideOpacity={0.0}
