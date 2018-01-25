@@ -161,7 +161,6 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-    console.log(state);
     return ({
       quotes: state.quote.current,
       loading: state.quote.loading,
