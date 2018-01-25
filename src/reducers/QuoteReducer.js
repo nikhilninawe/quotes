@@ -5,7 +5,8 @@ import {
   FETCH_SINGLE_QUOTE,
   SWITCH_STATE,
   CURRENT_QUOTE,
-  LANGUAGE_CHANGE } from '../actions/types';
+  LANGUAGE_CHANGE,
+  CURRENT_INDEX } from '../actions/types';
 
 const INITIAL_STATE = {
   current: [],
@@ -13,7 +14,8 @@ const INITIAL_STATE = {
   loading: false,
   count: 0,
   currentQuote: null,
-  language: 'en'
+  language: 'en',
+  index: 0
 };
 let THRESHOLD = 5;
 export default (state = INITIAL_STATE, action) => {
@@ -22,11 +24,13 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true };
     case FETCH_QUOTE: {
       return { 
-            ...state,
-            current: action.payload,
-            currentQuote: action.payload[0],
-            loading: false,
-            next: []
+        ...state,
+        current: action.payload,
+        currentQuote: action.payload[0],
+        loading: false,
+        next: [],
+        index: 0
+
       };
     }
     case FETCH_SINGLE_QUOTE: {
@@ -37,8 +41,13 @@ export default (state = INITIAL_STATE, action) => {
       }
       count++;
       let newNext = Array.from(state.next);
-      newNext = newNext.length !== 0 && action.payload.author === newNext[newNext.length - 1].author ? 
-                newNext : newNext.concat([action.payload]);
+      if (newNext.length !== 0
+          && action.payload.quote
+          && action.payload.quote === newNext[newNext.length - 1].quote) {
+          console.log(action.payload);
+      } else {
+        newNext = newNext.concat([action.payload]);
+      }
       return {
         ...state,
         count,
@@ -60,6 +69,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         language: action.payload.value
+      };
+    case CURRENT_INDEX:
+      return {
+        ...state,
+        index: action.payload
       };
     default:
         return state;

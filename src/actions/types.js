@@ -10,4 +10,5 @@ export const POPUP_OPEN = 'popup_open';
 export const POPUP_CLOSE = 'popup_close';
 export const AUTO_PLAY_EVENT = 'auto_play_event';
 export const LANGUAGE_CHANGE = 'language_change';
+export const CURRENT_INDEX = 'current_index';
 

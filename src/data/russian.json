@@ -1,9 +1,9 @@
 {
-  "quotes" : [
+  "quotes": [
     {
-      "quote": "А дело бывало -- и коза волка съедала.",
-      "author": "-"
-    },
+    "quote": "А дело бывало -- и коза волка съедала.",
+    "author": "-"
+  },
     {
       "quote": "Аво́сь да как-нибу́дь до добра́ не доведу́т.",
       "author": "-"
@@ -29,19 +29,19 @@
       "author": "-"
     },
     {
-      "quote": "Ба́бушка гада́ла, на́двое сказа́ла.	",
+      "quote": "Ба́бушка гада́ла, на́двое сказа́ла.",
       "author": "-"
     },
     {
-      "quote": "Ба́бушка на́двое сказа́ла.	",
+      "quote": "Ба́бушка на́двое сказа́ла.",
       "author": "-"
     },
     {
-      "quote": "Ба́ры деру́тся -- у холо́пов чубы́ треща́т.	",
+      "quote": "Ба́ры деру́тся -- у холо́пов чубы́ треща́т.",
       "author": "-"
     },
     {
-      "quote": "Беда́ никогда́ не прихо́дит одна́.	",
+      "quote": "Беда́ никогда́ не прихо́дит одна́.",
       "author": "-"
     },
     {
@@ -49,7 +49,7 @@
       "author": "-"
     },
     {
-      "quote": "Бе́дному оде́ться -- то́лько подпоя́саться.	",
+      "quote": "Бе́дному оде́ться -- то́лько подпоя́саться.",
       "author": "-"
     },
     {
@@ -57,7 +57,7 @@
       "author": "-"
     },
     {
-      "quote": "Без му́ки нет нау́ки.	",
+      "quote": "Без му́ки нет нау́ки.",
       "author": "-"
     },
     {
@@ -65,7 +65,7 @@
       "author": "-"
     },
     {
-      "quote": "Без труда́ не вы́тащишь и ры́бку из пруда́.	",
+      "quote": "Без труда́ не вы́тащишь и ры́бку из пруда́.",
       "author": "-"
     },
     {
@@ -123,6 +123,471 @@
     {
       "quote": "Бо́гу моли́сь, а добра́-ума́ держи́сь.",
       "author": "-"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/cf/da/7f/cfda7f1a061c9d05ffc9317606dc9f7d.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/cb/b7/2f/cbb72f4814da07ff5e3c198e66da0200.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/dd/ff/8f/ddff8f7b72890f81f81b124ec2ef61d1.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/ea/d1/7c/ead17c15e690f084c44848bdb8aeb41d.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/fd/f6/21/fdf621b5271ecbbc36b776bbbaa6c680.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/3c/91/31/3c91317ece67e783bc60e4e051b3b19d.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/61/43/6b/61436b42bcdfc1c31649c90a064b8606.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/42/4e/b7/424eb7a27f9ab35bf4bc9a032659f6a0.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/92/46/23/92462372ac9c5cc944270c657ac29d69.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/ca/e6/d2/cae6d2491d94480fc0f4d5c4e10bbf75.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/a0/81/75/a08175493cbc758d7619a9ec3c94f061.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/ac/b8/35/acb8357b188573475e2ea302e96af96e.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/4f/b4/fe/4fb4fea0112326ff9c502fc19adbabd2.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/9a/65/82/9a65827f35456bac32d135149851e743.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/78/45/e2/7845e22b0072555841e4ead4176a507d.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/93/6f/bc/936fbcae3f4c03a1cc65b3bd8a1a7105.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/e0/0b/e2/e00be2fb43a09de882c4dde1772b69d6.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/06/ba/77/06ba7737214894c4cf465b3d9e823b4c.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/96/4c/93/964c935476d6b310a6a9e8a3521686d5.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/7e/41/ac/7e41ac14b26162a9392a8c6a1bc97ae8.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/27/2b/f0/272bf00567e5d2b819615a9886875e4a.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/70/78/61/70786110df0ed1110dae19649ebf6765.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/dd/5c/ee/dd5cee43315970d0bfa0f2e2e3d68405.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/cf/6b/b9/cf6bb906976a306e7b56e2f640e13549.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/63/5d/96/635d96839145df54335cbdea4ec212f0.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/aa/98/44/aa9844e0c1b849fd0ecb24036d06bd25.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/9e/5a/9d/9e5a9d2c4cb6cd8fa54b4b82529288c0.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/c8/90/f7/c890f7469125c805ec205af68815c061.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/2e/05/78/2e0578dc24008c550fc5868179ca9157.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/31/e2/14/31e214e0581dff15d47eed4612f6c5e1.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/9c/12/94/9c12946c9818db6a55015554203345d7.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/72/07/2f/72072f778171b4b8930ece235576424c.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/42/6a/8e/426a8e7f31578a11eb0f1a2d30ec2fa5.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/81/27/04/81270429f3e958028900dd55614254a0.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/e3/ee/7f/e3ee7fff10d935bc1c78cfefb66d8063.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/dd/c7/27/ddc727d230c0be933838e752d7be92fd.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/a7/cf/a8/a7cfa87e1d1fa40745a953f8546d417b.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/b5/68/22/b568223909ef9182ec8b79e85f6ce7a1.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/b2/3f/cb/b23fcb0238fcf952f449a20641463f05.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/fe/50/8d/fe508d5abf59fe4b23c98ec7940a9a94.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/48/23/d0/4823d034e0f890c1168a0987edf68dc6.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/85/af/5a/85af5af4e2a447142aebced3fbc60c59.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/d2/8f/47/d28f4767681eec58586c50f6a750c22c.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/a6/a9/56/a6a956aee1ee3df612be6aeae63de9e5.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/86/1d/75/861d75dec8dc7d9d8edd2374bb4d6cce.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/35/03/aa/3503aaf44a7d228001a8b57be85e450b.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/bd/5c/2c/bd5c2c870ac2479c723dae89fc297f23.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/70/88/04/708804ed9973cd87c55a3b848f8cce29.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/e6/0e/ff/e60eff74278e79111879374c7cefc27e.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/94/1c/85/941c85d08ae40a7952f73860fe741302.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/d1/f9/1c/d1f91c7009709696fda1d2e6a96a78e0.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/68/3b/9a/683b9ac85da407b5952898d87ebbe0f5.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/82/bd/d1/82bdd11a2d76950d4bbaa80dc1424850.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/4b/9a/84/4b9a84c31e7e04656abd40780da517b9.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/44/77/65/44776535b9ae11a36dd654ea285fccbd.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/91/86/80/91868081d0033d7cc55bf52ae04c780c.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/4f/c9/11/4fc911664e89ff950efd350009138db5.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/cc/1c/53/cc1c531c988751f163bdb300f9343dfb.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/59/02/39/590239f1604a9817f451c7dffe041d01.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/5a/c8/2a/5ac82a54712f22d6d10f74d746291fcb.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/73/37/2d/73372d2576dd422812951c051c1375e7.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/9e/46/25/9e4625241e7b85d855c9b6cb859ecac4.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/fb/c4/db/fbc4dbd06e6b277de345224709984ccb.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/94/0c/88/940c88b8b0a7b65686315fa39fc1eb89.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/40/ce/45/40ce45d2888c5e20b8e531698c7b6cbc.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/29/d7/24/29d72435e4a4fdc9a6ce2fb124536ae3.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/41/d2/c9/41d2c9235a8bf9f51e100470498176e9.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/1e/9e/88/1e9e88922a2be06f3ad1a0aa140ec1fe.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/b3/f9/86/b3f986e3ea13fecf33289be5d5794305.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/6e/53/f3/6e53f38d4a5210f6c1ea26649690891c.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/d5/91/14/d5911467abc1b8431ae4843641a81f74.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/72/5e/13/725e13ca3cb741d8be64d2fc827c9386.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/29/10/f5/2910f552c20a5b22159371e1c3c77e37.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/7f/b5/66/7fb566b19fbf1049f0780d6c81da1ce2.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/eb/b0/1e/ebb01e92e12befefc046e090c6a33da4.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/e0/10/91/e01091fc83c79bb9818e33d38ad9c1a7.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/4c/ed/5f/4ced5f6fa7e453ed25096cadb2a8c51e.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/b3/d9/e5/b3d9e5bc7a2ea4a738d5a8ab9a024482.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/2a/5b/3c/2a5b3cc161f66243e7f3b40f7d25c110.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/1b/f1/f0/1bf1f07bf9bb83dfe5c63c2115680f56.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/66/fd/d7/66fdd78b01a384e56d32b4118b2729c5.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/03/f4/3d/03f43da9ee0ae8e289c407346d52af27.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/a1/54/71/a15471beb6f9708597602f1c6d6b0bd6.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/13/6a/73/136a731c955a6e0b97f053ace160e87f.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/3a/43/35/3a4335a235213447f2c3daecadfca62a.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/8c/45/ea/8c45ea1d0df26cc965460039b836f28e.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/ed/3e/53/ed3e53767ec91249b5d5e8c2a5e7ba45.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/a4/a3/36/a4a336aa72ace50bba3f4be41ccf54db.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/60/ab/cc/60abcc0fcd68e86f6ce1b15a9c2ecf77.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/c0/f9/a2/c0f9a21783a3b20498420ff3ed18ee9f.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/b7/79/13/b779135fb7eb5af328889bf9a623fc1e.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/41/88/46/418846fbf42a414735e89c9a0e616703.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/90/64/49/906449bb98beaf987bd2318d3319ff1c.jpg",
+      "author": "-",
+      "type": "image"
     }
   ]
 }

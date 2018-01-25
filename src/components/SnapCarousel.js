@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text,
      ScrollView,
-  TouchableWithoutFeedback, Dimensions, ImageBackground, AsyncStorage } from 'react-native';
+  TouchableWithoutFeedback, Dimensions, ImageBackground, AsyncStorage, Image } from 'react-native';
 import { connect } from 'react-redux';
 import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { Spinner } from './common';
 import { getQuotes,
-  getSingleQuote, switchState, updateCurrentQuote, languageChange } from '../actions/index';
+  getSingleQuote,
+  switchState, updateCurrentQuote, languageChange, updateCurrentIndex } from '../actions/index';
 
 function wp(percentage) {
     const value = (percentage * viewportWidth) / 100;
@@ -41,6 +42,7 @@ class SnapCarousel extends Component {
     }
 
     onSnapToItem(slideIndex) {
+        this.props.updateCurrentIndex(this.carousel.currentIndex);
         this.props.getSingleQuote(this.props.language);
         this.props.updateCurrentQuote(this.props.quotes[slideIndex]);
         if (slideIndex === this.props.quotes.length - 1) {
@@ -60,8 +62,17 @@ class SnapCarousel extends Component {
     }
 
     renderCard({ item }) {
+        if (item.type && item.type === 'image') {
+          return (
+            <Image
+              style={{ width: itemWidth, height: 400 }}
+              resizeMode={'contain'}
+              source={{ uri: item.quoteUrl }}
+            />
+          );
+        }
       const background = images[item.imageIndex];
-        return (
+      return (
             <ScrollView ref="view">
                 <TouchableWithoutFeedback>
                     <ImageBackground
@@ -101,7 +112,8 @@ class SnapCarousel extends Component {
                     enableMomentum={false}
                     activeSlideAlignment={'center'}
                     onSnapToItem={this.onSnapToItem.bind(this)}
-                    firstItem={0}
+                    firstItem={this.props.index}
+                    // hasParallaxImages
                 />
                 {this.state.gesture &&
                     <View style={{ flexDirection: 'row' }}>
@@ -149,6 +161,7 @@ const styles = {
 };
 
 const mapStateToProps = state => {
+    console.log(state);
     return ({
       quotes: state.quote.current,
       loading: state.quote.loading,
@@ -161,4 +174,9 @@ const mapStateToProps = state => {
 
 export default
  connect(mapStateToProps,
-    { getQuotes, switchState, getSingleQuote, updateCurrentQuote, languageChange })(SnapCarousel);
+    { getQuotes,
+      switchState,
+      getSingleQuote,
+      updateCurrentQuote,
+      languageChange,
+      updateCurrentIndex })(SnapCarousel);
