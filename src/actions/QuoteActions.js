@@ -7,10 +7,11 @@ import {
   SWITCH_STATE,
   CURRENT_QUOTE,
   LANGUAGE_CHANGE,
-  CURRENT_INDEX} from './types';
+  CURRENT_INDEX } from './types';
 import staticQuotes from '../data/english.json';
 import hindiQuotes from '../data/hindi';
 import russianQuotes from '../data/russian';
+import marathiQuotes from '../data/marathi';
 
 const api = new QuoteApi();
 const tApi = new TalaikisApi();
@@ -18,7 +19,8 @@ const imagesSize = 4;
 const languageMap = {
   en: staticQuotes,
   ru: russianQuotes,
-  hi: hindiQuotes
+  hi: hindiQuotes,
+  mr: marathiQuotes
 };
 
 function timeoutPromise(timeout, err, promise) {
@@ -88,23 +90,17 @@ const talaikisQuotes = (dispatch) => {
 
 
 export const getQuotes = (language = 'en') => {
-  const randomNumber = Math.floor((Math.random() * hindiQuotes.quotes.length) - 5);
+  const randomNumber = Math.floor((Math.random() * languageMap[language].quotes.length) - 5);
   switch (language) {
     case 'en':
       return (dispatch) => {
         dispatch({ type: FETCH_START });
         talaikisQuotes(dispatch);
       };
-    case 'hi': {
-      const quotes = hindiQuotes.quotes.splice(randomNumber, 10);
-      getModifiedQuotes(quotes);
-      return {
-        type: FETCH_QUOTE,
-        payload: quotes,
-      };
-    }
-    case 'ru': {
-      const quotes = russianQuotes.quotes.splice(randomNumber, 10);
+    case 'hi':
+    case 'ru':
+    case 'mr': {
+      const quotes = languageMap[language].quotes.splice(randomNumber, 10);
       getModifiedQuotes(quotes);
       return {
         type: FETCH_QUOTE,
@@ -124,15 +120,16 @@ export const getSingleQuote = (language = 'en') => {
       return (dispatch) => {
         prodQuote(dispatch, language);
       };
-    case 'hi': {
-      const randomQuote = Math.floor((Math.random() * hindiQuotes.quotes.length));
+    case 'hi':
+    case 'mr': {
+      const randomQuote = Math.floor((Math.random() * languageMap[language].quotes.length));
       return {
         type: FETCH_SINGLE_QUOTE,
         payload: {
-          quote: hindiQuotes.quotes[randomQuote].quote,
-          author: hindiQuotes.quotes[randomQuote].author,
-          type: hindiQuotes.quotes[randomQuote].type,
-          quoteUrl: hindiQuotes.quotes[randomQuote].quoteUrl,
+          quote: languageMap[language].quotes[randomQuote].quote,
+          author: languageMap[language].quotes[randomQuote].author,
+          type: languageMap[language].quotes[randomQuote].type,
+          quoteUrl: languageMap[language].quotes[randomQuote].quoteUrl,
           imageIndex
         }
       };

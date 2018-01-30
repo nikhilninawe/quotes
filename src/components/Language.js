@@ -16,6 +16,10 @@ const languages =
   {
     label: 'Russian',
     value: 'ru'
+  },
+  {
+   label: 'Marathi',
+   value: 'mr'
   }
 ];
 
