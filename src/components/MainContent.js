@@ -170,6 +170,10 @@ class MainContent extends Component {
       // }).then((resp) => {
       //   console.log(resp);
       // });
+      if (this.props.userId === '06afd4d0-08cb-11e8-ab8d-f10cc168f13f' ||
+         this.props.userId === '020212f0-08c5-11e8-8837-1fa0979ca683') {
+        console.log('Admin User');
+      }
       client.mutate({
         mutation: createSpamQuoteMutation,
         variables: {
