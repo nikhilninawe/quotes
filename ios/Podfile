@@ -17,6 +17,8 @@ target 'quotes' do
     pod 'RNViewShot', :path => '../node_modules/react-native-view-shot'
 
 
+    pod 'react-native-mail', :path => '../node_modules/react-native-mail'
+
   end
 
   target 'quotesTests' do

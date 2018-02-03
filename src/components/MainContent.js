@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
 import Share from 'react-native-share';
 import BackgroundJob from 'react-native-background-job';
+import gql from 'graphql-tag';
 import { captureRef } from 'react-native-view-shot';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Toast from 'react-native-simple-toast';
@@ -16,6 +17,32 @@ import { CardSection, Spinner } from './common/index';
 import { userAction, popupClose, popupOpen,
   loadNotificationSetting,
    autoplay } from '../actions/index';
+import client from './ApolloClient';
+
+const adsQuery = gql`
+  query getQuotes {
+    allQuotes {
+      id
+      author
+      language
+      quoteId
+      text
+    }
+  }`;
+
+const createSpamQuoteMutation = gql`
+  mutation ($feedback: String!, $quoteUrl: String!, $language: String!, $approved: String!){
+    createSpamQuote(feedback: $feedback,
+     quoteUrl: $quoteUrl,
+     language: $language,
+     approved: $approved
+     ) {
+      id
+      quoteUrl
+      feedback
+    }
+ }
+`;
 
 const backgroundJob = {
     jobKey: 'myJob',
@@ -38,6 +65,7 @@ const backgroundJob = {
 };
 
 BackgroundJob.register(backgroundJob);
+
 
 class MainContent extends Component {
 
@@ -115,12 +143,33 @@ class MainContent extends Component {
                 .then((successful) => {
                     console.log(`Save successful ${successful}`);
                     this.props.userAction('save_end');
-                    Toast.show('Successfully saved quote to Gallery', 10);
+                    Toast.show('Successfully saved quote to Gallery', Toast.LONG);
                 })
                 .catch(() => { this.props.userAction('save_end'); });
             },
             error => console.error('Oops, snapshot failed', error)
         );
+    }
+
+    markSpam() {
+      console.log(`Marked spam ${this.props.quote.quoteUrl}`);
+      Toast.show('Thank you for providing feedback. We will it incorporate soon.', Toast.LONG);
+      // client.query({
+      //     query: adsQuery
+      // }).then((resp) => {
+      //   console.log(resp);
+      // });
+      client.mutate({
+        mutation: createSpamQuoteMutation,
+        variables: {
+          feedback: 'Test Feedback',
+          quoteUrl: this.props.quote.quoteUrl,
+          language: this.props.language,
+          approved: 'No'
+        }
+      }).then((resp) => {
+        console.log(resp);
+      });
     }
 
     renderSave() {
@@ -156,6 +205,21 @@ class MainContent extends Component {
         );
     }
 
+    renderSpam() {
+      if (this.props.shareStarted) {
+        return (
+          <View>
+            <Spinner size="large" />
+          </View>
+        );
+      }
+      return (
+        <Icon.Button name="report" backgroundColor="indianred" onPress={this.markSpam.bind(this)}>
+          Mark Spam
+        </Icon.Button>
+      );
+    }
+
     render() {
         return (
             <View style={{ flex: 1, paddingTop: 20, justifyContent: 'space-between' }} >
@@ -164,8 +228,8 @@ class MainContent extends Component {
                 </View>
                 <CardSection style={{ justifyContent: 'space-around' }}>
                     {this.renderShare()}
-                    {/* <Icon name="favorite" size={40} color='pink' />     */}
                     {this.renderSave()}
+                    {this.renderSpam()}
                 </CardSection>
                 <GoogleAd />
                 {this.props.popupActive &&
@@ -187,7 +251,8 @@ const mapStateToProps = (state) => {
       saveStarted: state.action.saveActive,
       shareStarted: state.action.shareStarted,
       popupActive: state.popup.active,
-      quoteToShow: state.popup.quoteToShow
+      quoteToShow: state.popup.quoteToShow,
+      language: state.quote.language
      };
   };
 

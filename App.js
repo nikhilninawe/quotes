@@ -7,12 +7,13 @@ import RouterComponent from './src/components/RouterComponent';
 
 console.ignoredYellowBox = ['Remote debugger'];
 
+const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 class App extends Component {
 
     render() {
       return (
-        <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
-          <RouterComponent />
+        <Provider store={store}>
+            <RouterComponent />
         </Provider>
     );
     }
