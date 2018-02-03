@@ -1,6 +1,6 @@
-import { USER_ACTION } from '../actions/types';
+import { USER_ACTION, USER_ID } from '../actions/types';
 
-const INITIAL_STATE = { saveActive: false, shareStarted: false };
+const INITIAL_STATE = { saveActive: false, shareStarted: false, userId: '' };
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -29,7 +29,12 @@ export default (state = INITIAL_STATE, action) => {
                 default:
                     return state;
             }
-        default:
-            return state;
+      case USER_ID:
+        return {
+          ...state,
+          userId: action.payload
+        };
+      default:
+        return state;
     }
 };

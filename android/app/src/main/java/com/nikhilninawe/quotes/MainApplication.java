@@ -3,7 +3,6 @@ package com.nikhilninawe.quotes;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.chirag.RNMail.RNMail;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 import cl.json.RNSharePackage;
 import com.reactlibrary.RNRatePackage;
@@ -32,7 +31,6 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNMail(),
             new RNViewShotPackage(),
             new RNSharePackage(),
             new RNRatePackage(),

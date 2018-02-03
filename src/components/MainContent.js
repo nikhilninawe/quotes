@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
 import Share from 'react-native-share';
 import BackgroundJob from 'react-native-background-job';
+import uuid from 'react-native-uuid';
 import gql from 'graphql-tag';
 import { captureRef } from 'react-native-view-shot';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -14,7 +15,7 @@ import SnapCarousel from './SnapCarousel';
 import { PopupQuote } from './PopupQuote';
 import quotes from '../data/english.json';
 import { CardSection, Spinner } from './common/index';
-import { userAction, popupClose, popupOpen,
+import { userAction, userIdAction, popupClose, popupOpen,
   loadNotificationSetting,
    autoplay } from '../actions/index';
 import client from './ApolloClient';
@@ -31,11 +32,13 @@ const adsQuery = gql`
   }`;
 
 const createSpamQuoteMutation = gql`
-  mutation ($feedback: String!, $quoteUrl: String!, $language: String!, $approved: String!){
+  mutation ($feedback: String!, $quoteUrl: String!,
+   $language: String!, $approved: String!, $userId: String!){
     createSpamQuote(feedback: $feedback,
      quoteUrl: $quoteUrl,
      language: $language,
-     approved: $approved
+     approved: $approved,
+     userId: $userId
      ) {
       id
       quoteUrl
@@ -99,6 +102,14 @@ class MainContent extends Component {
         } else {
           this.props.autoplay(false, '30');
         }
+      }).done();
+
+      AsyncStorage.getItem('userId').then((userId) => {
+        let dbUserId = userId;
+        if (!dbUserId) {
+          dbUserId = uuid.v1();
+        }
+        this.props.userIdAction(dbUserId);
       }).done();
     }
 
@@ -165,7 +176,8 @@ class MainContent extends Component {
           feedback: 'Test Feedback',
           quoteUrl: this.props.quote.quoteUrl,
           language: this.props.language,
-          approved: 'No'
+          approved: 'No',
+          userId: this.props.userId
         }
       }).then((resp) => {
         console.log(resp);
@@ -252,9 +264,15 @@ const mapStateToProps = (state) => {
       shareStarted: state.action.shareStarted,
       popupActive: state.popup.active,
       quoteToShow: state.popup.quoteToShow,
-      language: state.quote.language
+      language: state.quote.language,
+      userId: state.action.userId
      };
   };
 
 export default connect(mapStateToProps,
-  { userAction, popupClose, popupOpen, autoplay, loadNotificationSetting })(MainContent);
+  { userAction,
+    popupClose,
+    popupOpen,
+    autoplay,
+    loadNotificationSetting,
+    userIdAction })(MainContent);

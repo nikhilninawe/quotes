@@ -6,6 +6,7 @@ export const CURRENT_QUOTE = 'current_quote_maintainer';
 export const NOTIFICATION_CHANGE = 'notification_change';
 export const NOTIFICATION_LOAD = 'notification_load';
 export const USER_ACTION = 'user_action';
+export const USER_ID = 'user_id';
 export const POPUP_OPEN = 'popup_open';
 export const POPUP_CLOSE = 'popup_close';
 export const AUTO_PLAY_EVENT = 'auto_play_event';
