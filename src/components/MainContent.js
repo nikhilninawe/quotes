@@ -171,7 +171,7 @@ class MainContent extends Component {
       //   console.log(resp);
       // });
       if (this.props.userId === '06afd4d0-08cb-11e8-ab8d-f10cc168f13f' ||
-         this.props.userId === '020212f0-08c5-11e8-8837-1fa0979ca683') {
+         this.props.userId === '5ad27970-09af-11e8-8478-5f1eb56fc221') {
         console.log('Admin User');
       }
       client.mutate({
