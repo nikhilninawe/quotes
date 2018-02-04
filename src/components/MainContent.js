@@ -57,7 +57,7 @@ const backgroundJob = {
             return nextNotifTime;
         }
         const nextTime = getNextNotificationTime();
-        const randomQuote = Math.floor((Math.random() * quotes.quotes.length) - 1);
+        const randomQuote = Math.floor((Math.random() * (quotes.quotes.length - 350)) - 1);
         PushNotification.localNotificationSchedule({
             message: `${quotes.quotes[randomQuote].quote} \n-${quotes.quotes[randomQuote].author}`,
             date: nextTime,
@@ -164,7 +164,7 @@ class MainContent extends Component {
 
     markSpam() {
       console.log(`Marked spam ${this.props.quote.quoteUrl}`);
-      Toast.show('Thank you for providing feedback. We will it incorporate soon.', Toast.LONG);
+      Toast.show('Thank you for providing feedback. We will incorporate it soon.', Toast.LONG);
       // client.query({
       //     query: adsQuery
       // }).then((resp) => {

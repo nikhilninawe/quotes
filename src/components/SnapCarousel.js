@@ -64,11 +64,15 @@ class SnapCarousel extends Component {
     renderCard({ item }) {
         if (item.type && item.type === 'image') {
           return (
-            <Image
-              style={{ width: itemWidth, height: 400 }}
-              resizeMode={'contain'}
-              source={{ uri: item.quoteUrl }}
-            />
+            <ScrollView ref="view">
+              <TouchableWithoutFeedback>
+                <Image
+                  style={{ width: itemWidth, height: 400 }}
+                  resizeMode={'contain'}
+                  source={{ uri: item.quoteUrl }}
+                />
+              </TouchableWithoutFeedback>
+            </ScrollView>
           );
         }
       const background = images[item.imageIndex];
