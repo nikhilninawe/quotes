@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   language: 'en',
   index: 0
 };
-let THRESHOLD = 5;
+const THRESHOLD = 20;
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_START:
@@ -37,7 +37,6 @@ export default (state = INITIAL_STATE, action) => {
       let count = state.count;
       if (count === THRESHOLD) {
         count = 0;
-        THRESHOLD = 10;
       }
       count++;
       let newNext = Array.from(state.next);

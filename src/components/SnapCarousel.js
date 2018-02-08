@@ -26,19 +26,12 @@ const images = ['https://s3.ap-south-1.amazonaws.com/quotes2.4/leather.jpg',
 'https://s3.ap-south-1.amazonaws.com/quotes2.4/stock.jpg'];
 
 class SnapCarousel extends Component {
-    state = { gesture: true };
     componentWillMount() {
         if (this.props.reload === undefined
            || this.props.reload
            || this.props.quotes.length === 0) {
           this.getCache('language');
         }
-    }
-
-    componentDidMount() {
-        this.timeoutHandle = setTimeout(() => {
-            this.setState({ gesture: false });
-        }, 7000);
     }
 
     onSnapToItem(slideIndex) {
@@ -119,19 +112,6 @@ class SnapCarousel extends Component {
                     firstItem={this.props.index}
                     // hasParallaxImages
                 />
-                {this.state.gesture &&
-                    <View style={{ flexDirection: 'row' }}>
-                        <Icon name="gesture-swipe-left" size={60} />
-                        <Text
-                        style={{ marginTop: 20,
-                        marginLeft: 5,
-                        fontWeight: 'bold',
-                        fontSize: 24 }}
-                        >
-                          Swipe Left
-                        </Text>
-                    </View>
-                }
              </View>
         );
     }

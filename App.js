@@ -9,14 +9,13 @@ console.ignoredYellowBox = ['Remote debugger'];
 
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 class App extends Component {
-
-    render() {
-      return (
-        <Provider store={store}>
-            <RouterComponent />
-        </Provider>
-    );
-    }
+  render() {
+    return (
+      <Provider store={store}>
+          <RouterComponent />
+      </Provider>
+  );
+  }
 }
 
 export default App;

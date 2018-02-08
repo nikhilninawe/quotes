@@ -10,15 +10,15 @@ const languages =
     value: 'en'
   },
   {
-    label: 'Hindi',
+    label: 'हिंदी',
     value: 'hi'
   },
   {
-    label: 'Russian',
+    label: 'русский',
     value: 'ru'
   },
   {
-   label: 'Marathi',
+   label: 'मराठी',
    value: 'mr'
   }
 ];

@@ -80,6 +80,13 @@ class MainContent extends Component {
           }
         });
 
+      // PushNotification.localNotification({
+      //   message: `${quotes.quotes[1].quote} \n-${quotes.quotes[1].author}`,
+      //   // date: nextTime,
+      //   smallIcon: 'ic_notification',
+      //   largeIcon: 'ic_launcher'
+      // });
+
       AsyncStorage.getItem('notification').then((notification) => {
         if (notification === undefined || notification == null) {
           this.props.loadNotificationSetting(true, '3');
@@ -222,13 +229,6 @@ class MainContent extends Component {
     }
 
     renderSpam() {
-      if (this.props.shareStarted) {
-        return (
-          <View>
-            <Spinner size="large" />
-          </View>
-        );
-      }
       return (
         <Icon.Button name="report" backgroundColor="indianred" onPress={this.markSpam.bind(this)}>
           Mark Spam

@@ -9,19 +9,12 @@ import {
   LANGUAGE_CHANGE,
   CURRENT_INDEX } from './types';
 import staticQuotes from '../data/english.json';
-import hindiQuotes from '../data/hindi';
-import russianQuotes from '../data/russian';
-import marathiQuotes from '../data/marathi';
+import languageMap from './LanguageMap';
 
 const api = new QuoteApi();
 const tApi = new TalaikisApi();
 const imagesSize = 4;
-const languageMap = {
-  en: staticQuotes,
-  ru: russianQuotes,
-  hi: hindiQuotes,
-  mr: marathiQuotes
-};
+
 
 function timeoutPromise(timeout, err, promise) {
   return new Promise((resolve, reject) => {
