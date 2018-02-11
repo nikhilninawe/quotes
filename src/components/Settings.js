@@ -8,10 +8,6 @@ import { notificationChange, autoplay, loadNotificationSetting } from '../action
 
 class Settings extends Component {
 
-    componentWillMount() {
-
-    }
-
     applyNotificationChange(notification, frequency) {
         BackgroundJob.cancel({ jobKey: 'myJob' });
         if (notification) {

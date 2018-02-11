@@ -69,7 +69,6 @@ const backgroundJob = {
 
 BackgroundJob.register(backgroundJob);
 
-
 class MainContent extends Component {
 
     componentWillMount() {

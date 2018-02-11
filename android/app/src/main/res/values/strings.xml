@@ -3,4 +3,5 @@
     <string moduleConfig="true" name="appcenterCrashes_whenToSendCrashes">ALWAYS_SEND</string>
     <string moduleConfig="true" name="appcenterAnalytics_whenToEnableAnalytics">ALWAYS_SEND</string>
     <string name="app_name">quotes</string>
+    <string name="facebook_app_id">911081449044635</string>
 </resources>

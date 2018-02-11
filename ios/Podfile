@@ -19,6 +19,7 @@ target 'quotes' do
 
     pod 'react-native-mail', :path => '../node_modules/react-native-mail'
 
+
   end
 
   target 'quotesTests' do
