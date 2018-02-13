@@ -3,7 +3,6 @@ import { View, TouchableOpacity, CameraRoll, Text, AsyncStorage } from 'react-na
 import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
 import Share from 'react-native-share';
-import BackgroundJob from 'react-native-background-job';
 import uuid from 'react-native-uuid';
 import gql from 'graphql-tag';
 import { captureRef } from 'react-native-view-shot';
@@ -18,7 +17,7 @@ import { userAction, userIdAction, popupClose, popupOpen,
   loadNotificationSetting,
    autoplay } from '../actions/index';
 import client from './ApolloClient';
-import languageJobs from './utils/LanguageJobs';
+import I18n from '../data/i18n';
 
 const adsQuery = gql`
   query getQuotes {
@@ -179,7 +178,7 @@ class MainContent extends Component {
             >
                 <View style={{ flexDirection: 'row' }}>
                     <Icon name="save" size={40} />
-                    <Text style={{ marginTop: 10, marginLeft: 5, fontWeight: 'bold' }}>Save</Text>
+                    <Text style={{ marginTop: 10, marginLeft: 5, fontWeight: 'bold' }}>{I18n.t('save')}</Text>
                 </View>
             </TouchableOpacity>
         );
@@ -201,7 +200,7 @@ class MainContent extends Component {
     renderSpam() {
       return (
         <Icon.Button name="report" backgroundColor="indianred" onPress={this.markSpam.bind(this)}>
-          Mark Spam
+          {I18n.t('spam')}
         </Icon.Button>
       );
     }

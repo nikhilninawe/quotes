@@ -16,6 +16,8 @@ target 'quotes' do
 
     pod 'RNViewShot', :path => '../node_modules/react-native-view-shot'
 
+    pod 'RNI18n', :path => '../node_modules/react-native-i18n'
+
   end
 
   target 'quotesTests' do

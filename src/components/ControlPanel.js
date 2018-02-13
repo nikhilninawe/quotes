@@ -4,6 +4,7 @@ import Rate from 'react-native-rate';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { CardSection } from './common/index';
+import I18n from '../data/i18n';
 
 class ControlPanel extends Component {
   
@@ -26,20 +27,20 @@ class ControlPanel extends Component {
         <View style={{ justifyContent: 'space-between', flex: 1 }}>
             <View>
               <CardSection style={{ backgroundColor: 'black', marginBottom: 20, justifyContent: 'center' }}>
-                <Text style={{ fontSize: 40, color: 'white' }}>quotes</Text>
+                <Text style={{ fontSize: 40, color: 'white' }}>{I18n.t('quotes')}</Text>
               </CardSection>
               <CardSection style={{ borderColor: 'white' }}>
                 {homeIcon}
-                <Text onPress={Actions.main} style={{ fontSize: 25, paddingLeft: 30 }}>Home</Text>
+                <Text onPress={Actions.main} style={{ fontSize: 25, paddingLeft: 30 }}>{I18n.t('home')}</Text>
               </CardSection>
                { <CardSection style={{ borderColor: 'white' }}>
                 {languageIcon}
-                <Text onPress={Actions.language} style={{ fontSize: 25, paddingLeft: 30 }}>Language</Text>
+                <Text onPress={Actions.language} style={{ fontSize: 25, paddingLeft: 30 }}>{I18n.t('language')}</Text>
               </CardSection>
                }
               <CardSection style={{ borderColor: 'white' }}>
                 {settingsIcon}
-                <Text onPress={Actions.settings} style={{ fontSize: 25, paddingLeft: 30 }}>Settings</Text>
+                <Text onPress={Actions.settings} style={{ fontSize: 25, paddingLeft: 30 }}>{I18n.t('settings')}</Text>
               </CardSection>
             </View>
             <View>
@@ -51,11 +52,11 @@ class ControlPanel extends Component {
               />
               <CardSection style={{ borderColor: 'white' }}>
                 {starIcon}
-                <Text onPress={() => Rate.rate(options, () => {})} style={{ fontSize: 20, paddingLeft: 15, marginBottom: 5 }}>Rate App</Text>
+                <Text onPress={() => Rate.rate(options, () => {})} style={{ fontSize: 20, paddingLeft: 15, marginBottom: 5 }}>{I18n.t('rate')}</Text>
               </CardSection>
               <CardSection style={{ borderColor: 'white' }}>
                 {infoIcon}
-                <Text onPress={Actions.about} style={{ fontSize: 20, paddingLeft: 15 }}>About</Text>
+                <Text onPress={Actions.about} style={{ fontSize: 20, paddingLeft: 15 }}>{I18n.t('about')}</Text>
               </CardSection>
             </View>  
         </View>

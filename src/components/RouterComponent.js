@@ -3,6 +3,7 @@ import { Router, Scene, Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import PushNotification from 'react-native-push-notification';
 import BackgroundJob from 'react-native-background-job';
+import { getLanguages } from 'react-native-i18n';
 import { connect } from 'react-redux';
 import ControlPanel from './ControlPanel';
 import MainContent from './MainContent';
@@ -10,7 +11,12 @@ import Settings from './Settings';
 import AboutComponent from './AboutComponent';
 import Language from './Language';
 import { popupOpen } from '../actions/index';
+import I18n from '../data/i18n';
 import languageJobs from './utils/LanguageJobs';
+
+getLanguages().then(languages => {
+  console.log(languages); // ['en-US', 'en']
+});
 
 class RouterComponent extends Component {
 
@@ -58,7 +64,7 @@ class RouterComponent extends Component {
             <Scene
               key="main"
               component={MainContent}
-              title="quotes"
+              title={I18n.t('quotes')}
               initial
             />
 
@@ -67,7 +73,7 @@ class RouterComponent extends Component {
               back
               key="language"
               component={Language}
-              title="Language"
+              title={I18n.t('language')}
             />
 
             <Scene
@@ -75,14 +81,14 @@ class RouterComponent extends Component {
               back
               key="settings"
               component={Settings}
-              title="Settings"
+              title={I18n.t('settings')}
             />
             <Scene
               onBack={() => Actions.main({ reload: false })}
               back
               key="about"
               component={AboutComponent}
-              title="About"
+              title={I18n.t('about')}
             />
           </Scene>
         </Router>

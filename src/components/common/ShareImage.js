@@ -5,6 +5,7 @@ View,
 Text
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import I18n from '../../data/i18n';
 
 const ShareImage = (props) => {
     return (
@@ -14,7 +15,7 @@ const ShareImage = (props) => {
             >
                 <View style={styles.instructions}>
                     <Icon name="share" size={40} color={'green'} />
-                    <Text style={{ marginTop: 10, marginLeft: 5, fontWeight: 'bold' }}>Share</Text>
+                    <Text style={{ marginTop: 10, marginLeft: 5, fontWeight: 'bold' }}>{I18n.t('share')}</Text>
                 </View>
             </TouchableOpacity>
         </View>
