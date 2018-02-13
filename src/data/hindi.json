@@ -1,14 +1,5 @@
 {
-  "quotes": [{
-    "quoteUrl": "https://i.pinimg.com/236x/23/e9/71/23e971a375fbfd7accb18e6a0ea5c6ee.jpg",
-    "author": "-",
-    "type": "image"
-  },
-    {
-      "quoteUrl": "https://i.pinimg.com/236x/e3/1f/3c/e31f3c00c02e5757c1e0347cebf4cc13.jpg",
-      "author": "-",
-      "type": "image"
-    },
+  "quotes": [
     {
       "quote": "अन्धों में काना राजा : मूर्ख मण्डली में थोड़ा पढ़ा-लिखा भी विद्वान् और ज्ञानी माना जाता है.",
       "author": "-"
@@ -396,6 +387,16 @@
     },
     {
       "quoteUrl": "https://i.pinimg.com/236x/85/a3/73/85a3736425d95b1652944de12a5e2b78.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/23/e9/71/23e971a375fbfd7accb18e6a0ea5c6ee.jpg",
+      "author": "-",
+      "type": "image"
+    },
+    {
+      "quoteUrl": "https://i.pinimg.com/236x/e3/1f/3c/e31f3c00c02e5757c1e0347cebf4cc13.jpg",
       "author": "-",
       "type": "image"
     },

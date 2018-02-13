@@ -8,22 +8,6 @@ import { notificationChange, autoplay, loadNotificationSetting } from '../action
 
 class Settings extends Component {
 
-    applyNotificationChange(notification, frequency) {
-        BackgroundJob.cancel({ jobKey: 'myJob' });
-        if (notification) {
-            console.log(`Scheduling myJob with frequency ${frequency} hour(s)`);
-            BackgroundJob.schedule({
-                jobKey: 'myJob',
-                period: frequency * 60 * 60 * 1000,
-                timeout: 10000,
-                allowExecutionInForeground: true
-            });
-        } else {
-            console.log('Not scheduling myJob');
-            PushNotification.cancelAllLocalNotifications();
-        }
-    }
-
     render() {
         return (
             <Card>
@@ -34,7 +18,6 @@ class Settings extends Component {
                          name="toggle-switch"
                          onValueChange={(value) => {
                             AsyncStorage.setItem('notification', JSON.stringify(value));
-                            this.applyNotificationChange(value, this.props.frequency);
                             this.props.notificationChange(value, this.props.frequency);
                         }}
 
@@ -46,7 +29,6 @@ class Settings extends Component {
                         selectedValue={this.props.frequency}
                         onValueChange={(itemValue, itemIndex) => {
                             AsyncStorage.setItem('frequency', itemValue);
-                            this.applyNotificationChange(true, itemValue);
                             this.props.notificationChange(true, itemValue);
                         }}
                     >

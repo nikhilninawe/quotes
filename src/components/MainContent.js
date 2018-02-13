@@ -13,12 +13,12 @@ import ShareImage from './common/ShareImage';
 import GoogleAd from './GoogleAd';
 import SnapCarousel from './SnapCarousel';
 import { PopupQuote } from './PopupQuote';
-import quotes from '../data/english.json';
 import { CardSection, Spinner } from './common/index';
 import { userAction, userIdAction, popupClose, popupOpen,
   loadNotificationSetting,
    autoplay } from '../actions/index';
 import client from './ApolloClient';
+import languageJobs from './utils/LanguageJobs';
 
 const adsQuery = gql`
   query getQuotes {
@@ -47,28 +47,6 @@ const createSpamQuoteMutation = gql`
  }
 `;
 
-const backgroundJob = {
-    jobKey: 'myJob',
-    job: () => {
-        function getNextNotificationTime() {
-            const nextNotifTime = new Date();
-            nextNotifTime.setMinutes(nextNotifTime.getMinutes() + 1);
-            nextNotifTime.setSeconds(0);
-            return nextNotifTime;
-        }
-        const nextTime = getNextNotificationTime();
-        const randomQuote = Math.floor((Math.random() * (quotes.quotes.length - 350)) - 1);
-        PushNotification.localNotificationSchedule({
-            message: `${quotes.quotes[randomQuote].quote} \n-${quotes.quotes[randomQuote].author}`,
-            date: nextTime,
-            smallIcon: 'ic_notification',
-            largeIcon: 'ic_launcher'
-        });
-    }
-};
-
-BackgroundJob.register(backgroundJob);
-
 class MainContent extends Component {
 
     componentWillMount() {
@@ -78,13 +56,6 @@ class MainContent extends Component {
               this.props.popupOpen(notification.message);
           }
         });
-
-      // PushNotification.localNotification({
-      //   message: `${quotes.quotes[1].quote} \n-${quotes.quotes[1].author}`,
-      //   // date: nextTime,
-      //   smallIcon: 'ic_notification',
-      //   largeIcon: 'ic_launcher'
-      // });
 
       AsyncStorage.getItem('notification').then((notification) => {
         if (notification === undefined || notification == null) {

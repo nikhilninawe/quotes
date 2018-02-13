@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router, Scene, Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import PushNotification from 'react-native-push-notification';
+import BackgroundJob from 'react-native-background-job';
 import { connect } from 'react-redux';
 import ControlPanel from './ControlPanel';
 import MainContent from './MainContent';
@@ -9,6 +10,7 @@ import Settings from './Settings';
 import AboutComponent from './AboutComponent';
 import Language from './Language';
 import { popupOpen } from '../actions/index';
+import languageJobs from './utils/LanguageJobs';
 
 class RouterComponent extends Component {
 
@@ -20,6 +22,24 @@ class RouterComponent extends Component {
           console.log('Initial notification is null');
         }
       });
+    }
+
+    componentWillReceiveProps(nextProps) {
+      BackgroundJob.cancelAll();
+      if (nextProps.notification) {
+        console.log(
+          `Scheduling Push notification for ${nextProps.language} with frequency ${nextProps.frequency}`
+        );
+
+        BackgroundJob.schedule({
+          jobKey: `myJob-${nextProps.language}`,
+          period: nextProps.frequency * 60 * 60 * 1000,
+          timeout: 10000,
+          allowExecutionInForeground: true
+        });
+      } else {
+        PushNotification.cancelAllLocalNotifications();
+      }
     }
 
     render() {
@@ -68,8 +88,15 @@ class RouterComponent extends Component {
         </Router>
       );
     }
-  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    language: state.quote.language,
+    notification: state.notification.notification,
+    frequency: state.notification.frequency,
+  };
+};
   
-  
-export default connect(null, { popupOpen })(RouterComponent);
+export default connect(mapStateToProps, { popupOpen })(RouterComponent);
 
