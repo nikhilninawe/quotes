@@ -22,7 +22,7 @@ export default {
   fifteen: '15',
   twenty: '20',
   thirty: '30',
-  refresh: 'Refresh Quotes',
+  refresh: 'Auto Swipe',
   once: 'Once in a day',
   hour: 'Hour',
   build: 'Build Version',

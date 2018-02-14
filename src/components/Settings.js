@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Text, Switch, Picker, AsyncStorage } from 'react-native';
-import BackgroundJob from 'react-native-background-job';
-import PushNotification from 'react-native-push-notification';
 import { connect } from 'react-redux';
 import { Card, CardSection } from './common/index';
 import { notificationChange, autoplay, loadNotificationSetting } from '../actions/index';

@@ -22,7 +22,7 @@ export default {
   fifteen: '१५',
   twenty: '२०',
   thirty: '३०',
-  refresh: 'रीफ्रेश कोट्स',
+  refresh: 'स्वचालित स्वाइप',
   once: 'दिन में एक बार',
   hour: 'घंटा',
   build: 'संस्करण का निर्माण',

@@ -101,8 +101,8 @@ android {
         applicationId "com.nikhilninawe.quotes"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 45
-        versionName "4.5"
+        versionCode 46
+        versionName "4.6"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

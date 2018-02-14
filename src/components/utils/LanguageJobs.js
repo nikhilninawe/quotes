@@ -15,7 +15,7 @@ const backgroundJob = {
       return nextNotifTime;
     }
     const nextTime = getNextNotificationTime();
-    const randomQuote = Math.floor((Math.random() * (quotes.quotes.length - 350)) - 1);
+    const randomQuote = Math.floor((Math.random() * 1770));
     PushNotification.localNotificationSchedule({
       message: `${quotes.quotes[randomQuote].quote} \n-${quotes.quotes[randomQuote].author}`,
       date: nextTime,
@@ -75,7 +75,7 @@ const backgroundJobRu = {
       return nextNotifTime;
     }
     const nextTime = getNextNotificationTime();
-    const randomQuote = Math.floor((Math.random() * 40));
+    const randomQuote = Math.floor((Math.random() * 30));
     PushNotification.localNotificationSchedule({
       message: `${russianQuotes.quotes[randomQuote].quote} \n-${russianQuotes.quotes[randomQuote].author}`,
       date: nextTime,
