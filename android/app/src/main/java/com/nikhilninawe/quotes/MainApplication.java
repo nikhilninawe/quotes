@@ -3,10 +3,10 @@ package com.nikhilninawe.quotes;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.RNRate.RNRatePackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 import cl.json.RNSharePackage;
-import com.reactlibrary.RNRatePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.pilloxa.backgroundjob.BackgroundJobPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
@@ -32,10 +32,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNRatePackage(),
             new RNI18nPackage(),
             new RNViewShotPackage(),
             new RNSharePackage(),
-            new RNRatePackage(),
             new VectorIconsPackage(),
             new BackgroundJobPackage(),
             new ReactNativePushNotificationPackage(),

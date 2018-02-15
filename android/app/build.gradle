@@ -148,10 +148,10 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-rate')
     compile project(':react-native-i18n')
     compile project(':react-native-view-shot')
     compile project(':react-native-share')
-    compile project(':react-native-rate')
     compile project(':react-native-vector-icons')
     compile project(':react-native-background-job')
     compile project(':react-native-push-notification')

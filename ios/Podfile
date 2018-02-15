@@ -6,7 +6,8 @@ target 'quotes' do
   # use_frameworks!
 
   # Pods for quotes
-  pod 'Google-Mobile-Ads-SDK'
+  platform :ios, '7.0'
+  pod 'Google-Mobile-Ads-SDK', '~> 7.0'
   target 'quotes-tvOSTests' do
     inherit! :search_paths
     # Pods for testing

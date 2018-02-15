@@ -7,7 +7,7 @@ PODS:
     - React
   - RNVectorIcons (4.5.0):
     - React
-  - RNViewShot (2.2.0):
+  - RNViewShot (2.3.0):
     - React
 
 DEPENDENCIES:
