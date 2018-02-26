@@ -9,7 +9,7 @@ export default {
   share: 'доля',
   save: 'спасти',
   spam: 'спам',
-  notification: 'кавычки уведомления',
+  notification: 'уведомления',
   seconds: 'секунд',
   every: 'каждый',
   minute: 'минут',

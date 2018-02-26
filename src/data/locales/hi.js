@@ -1,7 +1,7 @@
 
 export default {
   quotes: 'कोट्स',
-  settings: 'सेटिंग्ज',
+  settings: 'सेटिंग्स',
   language: 'भाषा',
   home: 'होम',
   rate: 'मूल्यांकन करें',

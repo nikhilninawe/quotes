@@ -5,83 +5,64 @@ import hindiQuotes from '../../data/hindi';
 import russianQuotes from '../../data/russian';
 import marathiQuotes from '../../data/marathi';
 
+function getRandomQuote(inputQuotes, limit) {
+  while (true) {
+    const randomQuote = Math.floor((Math.random() * limit));
+    if (inputQuotes[randomQuote].quote) {
+      return inputQuotes[randomQuote];
+    }
+  }
+}
+
+function getNextNotificationTime() {
+  const nextNotifTime = new Date();
+  nextNotifTime.setMinutes(nextNotifTime.getMinutes() + 1);
+  nextNotifTime.setSeconds(0);
+  return nextNotifTime;
+}
+
+function scheduleNotification(message, date) {
+  PushNotification.localNotificationSchedule({
+    message,
+    date,
+    smallIcon: 'ic_notification',
+    largeIcon: 'ic_launcher'
+  });
+}
+
 const backgroundJob = {
   jobKey: 'myJob-en',
   job: () => {
-    function getNextNotificationTime() {
-      const nextNotifTime = new Date();
-      nextNotifTime.setMinutes(nextNotifTime.getMinutes() + 1);
-      nextNotifTime.setSeconds(0);
-      return nextNotifTime;
-    }
     const nextTime = getNextNotificationTime();
-    const randomQuote = Math.floor((Math.random() * 1770));
-    PushNotification.localNotificationSchedule({
-      message: `${quotes.quotes[randomQuote].quote} \n-${quotes.quotes[randomQuote].author}`,
-      date: nextTime,
-      smallIcon: 'ic_notification',
-      largeIcon: 'ic_launcher'
-    });
+    const quote = getRandomQuote(quotes.quotes, 1770);
+    scheduleNotification(`${quote.quote} \n-${quote.author}`, nextTime);
   }
 };
 
 const backgroundJobMr = {
   jobKey: 'myJob-mr',
   job: () => {
-    function getNextNotificationTime() {
-      const nextNotifTime = new Date();
-      nextNotifTime.setMinutes(nextNotifTime.getMinutes() + 1);
-      nextNotifTime.setSeconds(0);
-      return nextNotifTime;
-    }
     const nextTime = getNextNotificationTime();
-    const randomQuote = Math.floor((Math.random() * 14));
-    PushNotification.localNotificationSchedule({
-      message: `${marathiQuotes.quotes[randomQuote].quote} \n-${marathiQuotes.quotes[randomQuote].author}`,
-      date: nextTime,
-      smallIcon: 'ic_notification',
-      largeIcon: 'ic_launcher'
-    });
+    const quote = getRandomQuote(marathiQuotes.quotes, 14);
+    scheduleNotification(`${quote.quote} \n-${quote.author}`, nextTime);
   }
 };
 
 const backgroundJobHi = {
   jobKey: 'myJob-hi',
   job: () => {
-    function getNextNotificationTime() {
-      const nextNotifTime = new Date();
-      nextNotifTime.setMinutes(nextNotifTime.getMinutes() + 1);
-      nextNotifTime.setSeconds(0);
-      return nextNotifTime;
-    }
     const nextTime = getNextNotificationTime();
-    const randomQuote = Math.floor((Math.random() * 105));
-    PushNotification.localNotificationSchedule({
-      message: `${hindiQuotes.quotes[randomQuote].quote} \n-${hindiQuotes.quotes[randomQuote].author}`,
-      date: nextTime,
-      smallIcon: 'ic_notification',
-      largeIcon: 'ic_launcher'
-    });
+    const quote = getRandomQuote(hindiQuotes.quotes, 105);
+    scheduleNotification(`${quote.quote} \n-${quote.author}`, nextTime);
   }
 };
 
 const backgroundJobRu = {
   jobKey: 'myJob-ru',
   job: () => {
-    function getNextNotificationTime() {
-      const nextNotifTime = new Date();
-      nextNotifTime.setMinutes(nextNotifTime.getMinutes() + 1);
-      nextNotifTime.setSeconds(0);
-      return nextNotifTime;
-    }
     const nextTime = getNextNotificationTime();
-    const randomQuote = Math.floor((Math.random() * 30));
-    PushNotification.localNotificationSchedule({
-      message: `${russianQuotes.quotes[randomQuote].quote} \n-${russianQuotes.quotes[randomQuote].author}`,
-      date: nextTime,
-      smallIcon: 'ic_notification',
-      largeIcon: 'ic_launcher'
-    });
+    const quote = getRandomQuote(russianQuotes.quotes, 30);
+    scheduleNotification(`${quote.quote} \n-${quote.author}`, nextTime);
   }
 };
 
