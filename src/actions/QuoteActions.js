@@ -81,50 +81,45 @@ const talaikisQuotes = (dispatch) => {
       });
 };
 
+const gqlQuotes = (dispatch, language, limit, action) => {
+  tApi.getGQLQuote(language, limit).then(response => {
+      const quotes = response.data.allQuotes;
+      if (quotes.length === 0) {
+        throw new Error('Received empty quote');
+      }
+      getModifiedQuotes(quotes);
+      dispatch({
+        type: action,
+        payload: quotes
+      });
+    }).catch(error => {
+      console.log(error);
+      const randomQuote = Math.floor((Math.random() * languageMap[language].quotes.length));
+      const quote = languageMap[language].quotes.splice(randomQuote, limit);
+      getModifiedQuotes(quote);
+      dispatch({
+        type: action,
+        payload: quote
+      });
+    });
+};
+
 
 export const getQuotes = (language = 'en') => {
-  const randomNumber = Math.floor((Math.random() * languageMap[language].quotes.length) - 5);
-  switch (language) {
-    case 'en':
-      return (dispatch) => {
-        dispatch({ type: FETCH_START });
-        talaikisQuotes(dispatch);
-      };
-    case 'hi':
-    case 'ru':
-    case 'mr': {
-      const quotes = languageMap[language].quotes.splice(randomNumber, 10);
-      getModifiedQuotes(quotes);
-      return {
-        type: FETCH_QUOTE,
-        payload: quotes,
-      };
-    }
-    default:
-      break;
-  }
+    return (dispatch) => {
+      dispatch({ type: FETCH_START });
+      gqlQuotes(dispatch, language, 10, FETCH_QUOTE);
+    };
 };
 
 export const getSingleQuote = (language = 'en') => {
-  const imageIndex = Math.floor(Math.random() * imagesSize);
   switch (language) {
     case 'en':
     case 'ru':
-      return (dispatch) => {
-        prodQuote(dispatch, language);
-      };
     case 'hi':
     case 'mr': {
-      const randomQuote = Math.floor((Math.random() * languageMap[language].quotes.length));
-      return {
-        type: FETCH_SINGLE_QUOTE,
-        payload: {
-          quote: languageMap[language].quotes[randomQuote].quote,
-          author: languageMap[language].quotes[randomQuote].author,
-          type: languageMap[language].quotes[randomQuote].type,
-          quoteUrl: languageMap[language].quotes[randomQuote].quoteUrl,
-          imageIndex
-        }
+      return (dispatch) => {
+        gqlQuotes(dispatch, language, 1, FETCH_SINGLE_QUOTE);
       };
     }
     default:
@@ -158,3 +153,4 @@ export const updateCurrentIndex = (index) => {
     payload: index
   };
 };
+
