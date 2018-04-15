@@ -12,7 +12,7 @@ import AboutComponent from './AboutComponent';
 import Language from './Language';
 import { popupOpen } from '../actions/index';
 import I18n from '../data/i18n';
-import languageJobs from './utils/LanguageJobs';
+import languageJobs from '../components/utils/LanguageJobs'; //Donot uncomment
 
 getLanguages().then(languages => {
   console.log(languages); // ['en-US', 'en']
@@ -37,12 +37,16 @@ class RouterComponent extends Component {
           `Scheduling Push notification for ${nextProps.language} with frequency ${nextProps.frequency}`
         );
 
-        BackgroundJob.schedule({
-          jobKey: `myJob-${nextProps.language}`,
-          period: nextProps.frequency * 60 * 60 * 1000,
-          timeout: 10000,
-          allowExecutionInForeground: true
-        });
+        try {
+          BackgroundJob.schedule({
+            jobKey: `myJob-${nextProps.language}`,
+            period: nextProps.frequency * 60 * 60 * 1000,
+            timeout: 10000,
+            allowExecutionInForeground: true
+          });
+        } catch (e) {
+          console.log(e);
+        }
       } else {
         PushNotification.cancelAllLocalNotifications();
       }
@@ -50,6 +54,7 @@ class RouterComponent extends Component {
 
     render() {
       const menuIcon = (<Icon name="menu" size={30} />);
+      // const source = Icon.getImageSource('sign-out', 20, 'white');
       return (
         <Router sceneStyle={{ paddingTop: 5 }}>
           <Scene
@@ -66,6 +71,9 @@ class RouterComponent extends Component {
               component={MainContent}
               title={I18n.t('quotes')}
               initial
+              // rightButtonImage={ source }
+              // onRight={() => { console.log('Right pressed'); }}
+
             />
 
             <Scene

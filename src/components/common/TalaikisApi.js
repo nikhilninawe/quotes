@@ -15,12 +15,13 @@ export default class TalaikisApi extends RestClient {
     return this.GET('/quotes/random/');
   }
 
-  getGQLQuote(language = 'en', limit = 1) {
+  getGQLQuote(language = 'en', limit = 1, skip = 0) {
     return client.query({
       query: quotesQuery,
       variables: {
         lang: language,
-        limit
+        limit,
+        skip
       }
     });
   }

@@ -15,6 +15,12 @@ const api = new QuoteApi();
 const tApi = new TalaikisApi();
 const imagesSize = 4;
 
+const quoteCountMap = {
+  en: 1008,
+  mr: 1010,
+  hi: 1013,
+  ru: 284
+};
 
 function timeoutPromise(timeout, err, promise) {
   return new Promise((resolve, reject) => {
@@ -88,7 +94,7 @@ const talaikisQuotes = (dispatch) => {
 };
 
 const gqlQuotes = (dispatch, language, limit, action) => {
-  tApi.getGQLQuote(language, limit).then(response => {
+  tApi.getGQLQuote(language, limit, Math.random() * quoteCountMap[language]).then(response => {
       let quotes = response.data.allQuotes;
       if (quotes.length === 0) {
         throw new Error('Received empty quote');
