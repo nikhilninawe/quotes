@@ -39,14 +39,6 @@ export default (state = INITIAL_STATE, action) => {
         count = 0;
       }
       count++;
-      // let newNext = Array.from(state.next);
-      // if (newNext.length !== 0
-      //     && action.payload.quote
-      //     && action.payload.quote === newNext[newNext.length - 1].quote) {
-      //     console.log(action.payload);
-      // } else {
-      //   newNext = newNext.concat([action.payload]);
-      // }
       return {
         ...state,
         count,

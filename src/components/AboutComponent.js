@@ -11,7 +11,7 @@ class AboutComponent extends Component {
             <View style={{ paddingTop: 20, paddingLeft: 10, paddingRight: 10, flex: 1, maxHeight: 150, justifyContent: 'space-around' }}>
                 <CardSection style={{ flexDirection: 'column', justifyContent: 'space-between', height: 70, paddingBottom: 5 }}>
                      <Text style={{ fontSize: 25 }}> {I18n.t('build')} </Text>
-                     <Text style={{ paddingLeft: 7, fontSize: 20 }}>4.0</Text>
+                     <Text style={{ paddingLeft: 7, fontSize: 20 }}>5.1</Text>
                 </CardSection>
 
                 <CardSection>

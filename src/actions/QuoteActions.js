@@ -24,9 +24,15 @@ function timeoutPromise(timeout, err, promise) {
 }
 
 const getModifiedQuotes = quotes => {
+  const clone = [];
   quotes.forEach(quote => {
-    quote.imageIndex = Math.floor((Math.random() * imagesSize));
+    const q = JSON.parse(JSON.stringify(quote));
+    if (q.type === 'text') {
+      q.imageIndex = Math.floor((Math.random() * imagesSize));
+    }
+    clone.push(q);
   });
+  return clone;
 };
 
 const prodQuote = (dispatch, language) => {
@@ -63,8 +69,8 @@ const talaikisQuotes = (dispatch) => {
   const randomQuote = Math.floor((Math.random() * 90) - 1);  
   timeoutPromise(3000, new Error('Timed Out!'), tApi.getQuote())
       .then(response => {
-        const quotes = response.splice(randomQuote, 10);
-        getModifiedQuotes(quotes);
+        let quotes = response.splice(randomQuote, 10);
+        quotes = getModifiedQuotes(quotes);
         dispatch({
           type: FETCH_QUOTE,
           payload: quotes
@@ -72,8 +78,8 @@ const talaikisQuotes = (dispatch) => {
       })
       .catch(error => {
         console.log(error);
-        const quote = staticQuotes.quotes.splice(randomQuote, 10);
-        getModifiedQuotes(quote);
+        let quote = staticQuotes.quotes.splice(randomQuote, 10);
+        quote = getModifiedQuotes(quote);
         dispatch({
           type: FETCH_QUOTE,
           payload: quote
@@ -83,11 +89,11 @@ const talaikisQuotes = (dispatch) => {
 
 const gqlQuotes = (dispatch, language, limit, action) => {
   tApi.getGQLQuote(language, limit).then(response => {
-      const quotes = response.data.allQuotes;
+      let quotes = response.data.allQuotes;
       if (quotes.length === 0) {
         throw new Error('Received empty quote');
       }
-      getModifiedQuotes(quotes);
+      quotes = getModifiedQuotes(quotes);
       dispatch({
         type: action,
         payload: quotes
@@ -95,8 +101,8 @@ const gqlQuotes = (dispatch, language, limit, action) => {
     }).catch(error => {
       console.log(error);
       const randomQuote = Math.floor((Math.random() * languageMap[language].quotes.length));
-      const quote = languageMap[language].quotes.splice(randomQuote, limit);
-      getModifiedQuotes(quote);
+      let quote = languageMap[language].quotes.splice(randomQuote, limit);
+      quote = getModifiedQuotes(quote);
       dispatch({
         type: action,
         payload: quote

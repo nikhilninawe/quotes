@@ -9,7 +9,7 @@ export default {
   share: 'Share',
   save: 'Save',
   spam: 'Spam',
-  notification: 'Quote Notifications',
+  notification: 'Notifications',
   seconds: 'seconds',
   every: 'Every',
   minute: 'minute',
